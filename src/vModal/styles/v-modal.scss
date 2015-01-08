@@ -1,0 +1,388 @@
+/***************************************
+  Modal
+ ***************************************/
+
+
+/* Settings */
+$modal-spacing: 20px;
+$modal-enter-duration: 0.75s;
+$modal-zindex: 1000;
+$modal-backdrop-color: rgba(0,0,0, 0.6);
+
+$dialog-bg-color: white;
+$dialog-md-size: 640px; 
+$dialog-lg-size: 800px;
+$dialog-sm-size: 400px;
+
+
+
+/**
+ * Example HTML:
+ *
+  <v-modal backdrop>
+    <v-dialog>[content]</v-dialog>
+  </v-modal>
+ */
+
+
+.Modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: $modal-zindex;
+  background-color: $modal-backdrop-color;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+
+/* Modal modifires
+ ***************************************/
+
+/* Modifier: default modal */
+
+.Modal--default {
+  transition: opacity 0.25s;
+
+  &.ng-enter,
+  &.ng-leave.ng-leave-active {
+    opacity: 0;
+  }
+
+  &.ng-leave,
+  &.ng-enter.ng-enter-active {
+    opacity: 1;
+  }
+}
+
+
+
+/***************************************
+  Dialog
+ ***************************************/
+
+
+/**
+ * Example HTML:
+ *
+  <v-dialog close>
+    <v-dialog-header>[content]</v-dialog-header>
+    <v-dialog-body>[content]</v-dialog-body>
+    <v-dialog-footer>[content]</v-dialog-footer>
+  </v-dialog>
+ */
+
+
+.Dialog {
+  padding: $modal-spacing;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.Dialog-content {
+  position: relative;
+  background-color: $dialog-bg-color;
+  pointer-events: auto;
+}
+
+.Dialog-close {
+  appearance: none;
+  box-sizing: border-box;
+  display: block;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  text-align: center;
+  
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+
+  font: inherit;
+  color: #2196F3;
+
+  text-decoration: none;
+  user-select: none;
+  white-space: normal;
+  line-height: normal;
+
+  font-size: inherit;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: darken(#2196F3, 10%);
+    text-decoration: none;
+    outline: 0;
+    background-image: none;
+  }
+}
+
+.Dialog-header,
+.Dialog-body,
+.Dialog-footer {
+  position: relative;
+}
+
+
+/* Dialog modifires
+ ***************************************/
+
+/* Modifiers: size */
+
+.Dialog--sizeMd .Dialog-content {
+  max-width: $dialog-md-size;
+}
+.Dialog--sizeLg .Dialog-content {
+  max-width: $dialog-lg-size;
+}
+.Dialog--sizeSm .Dialog-content {
+  max-width: $dialog-sm-size;
+}
+
+
+/* Modifiers: position */
+
+.Dialog--positionCenter {
+  width: 100%;
+  margin: $modal-spacing * 2 0;
+
+  .Dialog-content {
+    margin: 0 auto;
+  }
+}
+.Dialog--positionMiddle {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  .Dialog-content {
+    margin: 0 auto;
+  }
+}
+.Dialog--positionTopLeft {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.Dialog--positionTopRight {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.Dialog--positionBottomLeft {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.Dialog--positionBottomRight {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+
+/* Modifier: default dialog */
+
+.Dialog--default.Dialog--positionCenter {
+  animation: Dialog-enterDown $modal-enter-duration;
+}
+.Dialog--default.Dialog--positionTopLeft,
+.Dialog--default.Dialog--positionBottomLeft {
+  animation: Dialog-enterLeft $modal-enter-duration;
+}
+.Dialog--default.Dialog--positionTopRight,
+.Dialog--default.Dialog--positionBottomRight {
+  animation: Dialog-enterRight $modal-enter-duration;
+}
+.Dialog--default.Dialog--positionMiddle {
+  animation: Dialog-enterZoom $modal-enter-duration * 0.75;
+}
+
+.Dialog--default .Dialog-content {
+  border-radius: 2px;
+  box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.25);
+}
+
+.Dialog--default .Dialog-header,
+.Dialog--default .Dialog-body,
+.Dialog--default .Dialog-footer {
+  padding: $modal-spacing;
+}
+
+.Dialog--default .Dialog-header {
+  border-bottom: 1px solid #F0F0F0;
+}
+
+.Dialog--default .Dialog-footer {
+  border-top: 1px solid #F0F0F0;
+}
+
+.Dialog--default .Dialog-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  z-index: 10;
+
+  transition: transform 0.25s;
+
+  span {
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+
+  &::after,
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    height: 1px;
+    width: 16px;
+    background-color: #2196F3;
+    transition: background-color 0.25s, transform 0.25s;
+    transform-origin: 50% 50%;
+  }
+
+  &::before {
+    transform: rotate(-45deg);
+  }
+
+  &::after {
+    transform: rotate(45deg);
+  }
+
+  &:hover {
+    transform: scale(0.75);
+
+    &::before,
+    &::after {
+      background-color: #F44336;
+    }
+  }
+}
+
+
+/* Dialog animations
+ ***************************************/
+
+@keyframes Dialog-enterDown {
+  0%, 60%, 75%, 90%, 100% {
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -3000px, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(0, 25px, 0);
+  }
+  75% {
+    transform: translate3d(0, -10px, 0);
+  }
+  90% {
+    transform: translate3d(0, 5px, 0);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes Dialog-enterLeft {
+  0%, 60%, 75%, 90%, 100% {
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    transform: translate3d(-3000px, 0, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(25px, 0, 0);
+  }
+
+  75% {
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  90% {
+    transform: translate3d(5px, 0, 0);
+  }
+
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes Dialog-enterRight {
+  0%, 60%, 75%, 90%, 100% {
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    transform: translate3d(3000px, 0, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(-25px, 0, 0);
+  }
+
+  75% {
+    transform: translate3d(10px, 0, 0);
+  }
+
+  90% {
+    transform: translate3d(-5px, 0, 0);
+  }
+
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes Dialog-enterZoom {
+  0%, 60%, 100% {
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    transform: translateY(-50%) scale3d(.3, .3, .3);
+  }
+
+  60% {
+    transform: translateY(-50%) scale3d(1.05, 1.05, 1.05);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(-50%) scale3d(1, 1, 1);
+  }
+}
+
+
+
+/* State: has modal 
+ ***************************************/
+
+.has-modal {
+  overflow: hidden;
+}
+

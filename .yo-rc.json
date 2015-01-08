@@ -1,0 +1,29 @@
+{
+  "generator-angularjs-library": {
+    "props": {
+      "author": {
+        "name": "Łukasz Wątroba",
+        "email": "l@lukaszwatroba.com"
+      },
+      "libraryName": {
+        "original": "v-modal",
+        "camelized": "vModal",
+        "dasherized": "v-modal",
+        "slugified": "v-modal",
+        "parts": [
+          "v",
+          "modal"
+        ]
+      },
+      "includeModuleDirectives": true,
+      "includeModuleFilters": false,
+      "includeModuleServices": true,
+      "includeAngularModuleResource": false,
+      "includeAngularModuleCookies": false,
+      "includeAngularModuleSanitize": false,
+      "librarySrcDirectory": "src/vModal",
+      "libraryUnitTestDirectory": "test/unit/vModal",
+      "libraryUnitE2eDirectory": "test/e2e/vModal"
+    }
+  }
+}
