@@ -10,7 +10,6 @@
     "popup",
     "modal",
     "window",
-    "toast",
     "component",
     "directive",
     "module"
