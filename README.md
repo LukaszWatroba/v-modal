@@ -9,7 +9,7 @@ Simple, flexible and beautiful modal dialogs in AngularJS.
 ## Installation
   - If you use [bower](http://bower.io/), just `bower install v-modal`. If not, download files [from the github repo](./dist)
   - Reference `v-modal.css` and `v-modal.js` in your index.html file
-  - Reference the module in your app: `angular.module('myApp', [ 'v-modal' ])`
+  - Reference the module in your app: `angular.module('myApp', [ 'vModal' ])`
 
 
 ## Usage
@@ -17,7 +17,7 @@ Simple, flexible and beautiful modal dialogs in AngularJS.
 > app.js
 
 ```javascript
-angular.module('myApp', ['v-modal'])
+angular.module('myApp', ['vModal'])
 
 .factory('myModal', function (vModal) {
   return vModal({
@@ -68,28 +68,26 @@ angular.module('myApp', ['v-modal'])
 
 
 ### Sizes
+  - `small`
+  - `medium`
+  - `large`
 
-  - small
-  - medium
-  - large
-
-  ```html
-  <v-dialog size="large"></v-dialog>
-  ```
+```html
+<v-dialog size="large"></v-dialog>
+```
 
 
 ### Positions
+  - `center`
+  - `middle`
+  - `top-left`
+  - `top-right`
+  - `bottom-left`
+  - `bottom-right`
 
-  - center
-  - middle
-  - top-left
-  - top-right
-  - bottom-left
-  - bottom-right
-
-  ```html
-  <v-dialog position="top-right"></v-dialog>
-  ```
+```html
+<v-dialog position="top-right"></v-dialog>
+```
 
 
 ## Config
