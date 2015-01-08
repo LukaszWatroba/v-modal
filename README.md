@@ -1,15 +1,15 @@
-# AngularJS modal dialogs
-Simple, flexible and beautiful modal dialogs in AngularJS
+# AngularJS modal component
+Simple, flexible and beautiful modal dialogs in AngularJS.
 
 
 ## Demos
-  - [GitHub page](http://lukaszwatroba.github.io/v-modal)
+  - [GitHub](http://lukaszwatroba.github.io/v-modal)
 
 
 ## Installation
-  - If you use [bower](http://bower.io/), just `bower install v-accordion`. If not, download files [from the github repo](./dist)
+  - If you use [bower](http://bower.io/), just `bower install v-modal`. If not, download files [from the github repo](./dist)
   - Reference `v-modal.css` and `v-modal.js` in your index.html file
-  - Reference the module in your app: angular.module('myApp', [ 'v-modal' ])
+  - Reference the module in your app: `angular.module('myApp', [ 'v-modal' ])`
 
 
 ## Usage
@@ -67,7 +67,7 @@ angular.module('myApp', ['v-modal'])
 ```
 
 
-## Dialog sizes
+### Sizes
 
   - small
   - medium
@@ -78,7 +78,7 @@ angular.module('myApp', ['v-modal'])
   ```
 
 
-## Dialog positions
+### Positions
 
   - center
   - middle
