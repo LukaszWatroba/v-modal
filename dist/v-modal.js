@@ -49,8 +49,8 @@ angular.module('vModal.config', [])
 
 
 // Modules
-angular.module('vModal.directives', []);
-angular.module('vModal.services', []);
+angular.module('vModal.directives', [ 'ngAnimate' ]);
+angular.module('vModal.services', [ 'ngAnimate' ]);
 angular.module('vModal',
   [
     'ngAnimate',
@@ -239,7 +239,7 @@ function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, 
     var template        = config.template,
         controller      = config.controller || angular.noop,
         controllerAs    = config.controllerAs,
-        container       = angular.element(config.container || document.querySelector(modalConfig.containerSelector)),
+        container       = angular.element(config.container || $document[0].querySelector(modalConfig.containerSelector)),
         element         = null,
         html,
         scope;
@@ -269,7 +269,7 @@ function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, 
       element = angular.element(html);
 
       if (element.length === 0) {
-        throw new Error('The template contains no elements; you need to wrap text nodes')
+        throw new Error('The template contains no elements; you need to wrap text nodes');
       }
 
       $animate.enter(element, container);
