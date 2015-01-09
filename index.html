@@ -76,7 +76,9 @@
 
     </div>
 
-    
+    <v-dialog-header>
+            <h3>Account Login</h3>
+          </v-dialog-header>
 
     <!-- Login modal example -->
     <script type="text/ng-template" id="login-modal-template.html">
@@ -165,12 +167,14 @@
             <h4 class="u-marginBs">vModal</h4>
 
             <p>
-              Simple, flexible and beautiful modal dialogs in AngularJS.
+              Simple, flexible and beautiful modal dialogs in AngularJS.<br>
+              <small><i>Click on the "Cancel" button to close this dialog.</i></small>
             </p>
 
-            <div class="u-marginTm u-textRight">
-              <button class="Button u-marginRm" type="button" ng-click="infoModal.close()">Cancel</button>
-              <a class="Button Button--default" href="https://github.com/LukaszWatroba/v-modal" target="_blank">Fork me on GitHub</a>
+            <div class="u-marginTm">
+              
+              <a class="Button Button--default u-marginRm" href="https://github.com/LukaszWatroba/v-modal" target="_blank">Fork me on GitHub</a>
+              <button class="Button" type="button" ng-click="infoModal.close()">Cancel</button>
             </div>
           </v-dialog-body>
 

@@ -1,7 +1,6 @@
 describe('v-modal directive', function () {
   
   var $compile;
-  var $rootScope;
   var modalConfig;
   var scope;
 
@@ -28,8 +27,7 @@ describe('v-modal directive', function () {
 
   beforeEach(module('vModal'));
 
-  beforeEach(inject(function (_$rootScope_, _$compile_, _modalConfig_) {
-    $rootScope = _$rootScope_;
+  beforeEach(inject(function ($rootScope, _$compile_, _modalConfig_) {
     scope = $rootScope.$new();
     $compile = _$compile_;
     modalConfig = _modalConfig_;
@@ -41,7 +39,7 @@ describe('v-modal directive', function () {
 
 
 
-  it('should replace v-modal with div element and add a class', function () {
+  it('should replace `v-modal` with `div` element and add a `Modal` class', function () {
     var template = generateTemplate();
 
     var modal = $compile(template)(scope);
@@ -64,7 +62,7 @@ describe('v-modal directive', function () {
   });
 
 
-  it('should call close function on backdrop click', function () {
+  it('should call `closeModal` method on backdrop click', function () {
     var template = generateTemplate({ closeMethod: true });
     var modal = $compile(template)(scope);
 

@@ -1,7 +1,6 @@
 describe('v-dialog directive', function () {
   
   var $compile;
-  var $rootScope;
   var modalConfig;
   var scope;
   var selector;
@@ -36,8 +35,7 @@ describe('v-dialog directive', function () {
 
   beforeEach(module('vModal'));
 
-  beforeEach(inject(function (_$rootScope_, _$compile_, _modalConfig_) {
-    $rootScope = _$rootScope_;
+  beforeEach(inject(function ($rootScope, _$compile_, _modalConfig_) {
     scope = $rootScope.$new();
     $compile = _$compile_;
     modalConfig = _modalConfig_;
@@ -118,7 +116,7 @@ describe('v-dialog directive', function () {
   });
 
 
-  it('should add `Dialog--sizeMd` class if `size` attribute is not defined', function () {
+  it('should add a `Dialog--sizeMd` class if `size` attribute is not defined', function () {
     var className = modalConfig.classes.sizes['medium'];
 
     var template = generateTemplate();
@@ -129,7 +127,7 @@ describe('v-dialog directive', function () {
   });
 
 
-  it('should add class based on `size` attribute value', function () {
+  it('should add a `Dialog--sizeLarge` class if `size` attribute is set to `large`', function () {
     var dialogSize = 'large';
     var className = modalConfig.classes.sizes[dialogSize];
 
@@ -141,7 +139,7 @@ describe('v-dialog directive', function () {
   });
 
 
-  it('should add `Dialog--positionCenter` class if `position` attribute is not defined', function () {
+  it('should add a `Dialog--positionCenter` class if `position` attribute is not defined', function () {
     var className = modalConfig.classes.positions['center'];
 
     var template = generateTemplate();
@@ -152,7 +150,7 @@ describe('v-dialog directive', function () {
   });
 
 
-  it('should add class based on `position` attribute value', function () {
+  it('should add a `Dialog--positionMiddle` class if `position` attribute is set to `middle`', function () {
     var dialogPosition = 'middle';
     var className = modalConfig.classes.positions[dialogPosition];
 
