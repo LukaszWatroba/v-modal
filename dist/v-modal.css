@@ -32,7 +32,7 @@
  ***************************************/
 /* Modifier: default modal */
 .Modal--default {
-  transition: opacity 0.25s; }
+  transition: opacity 0.5s; }
   .Modal--default.ng-enter, .Modal--default.ng-leave.ng-leave-active {
     opacity: 0; }
   .Modal--default.ng-leave, .Modal--default.ng-enter.ng-enter-active {
@@ -110,14 +110,17 @@
     margin: 0 auto; }
 
 .Dialog--positionMiddle {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100%;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-          transform: translateY(-50%); }
-  .Dialog--positionMiddle .Dialog-content {
-    margin: 0 auto; }
+  height: 100%; }
 
 .Dialog--positionTopLeft {
   position: absolute;
@@ -143,16 +146,13 @@
 .Dialog--default.Dialog--positionCenter {
   -webkit-animation: Dialog-enterDown 0.75s;
           animation: Dialog-enterDown 0.75s; }
-
 .Dialog--default.Dialog--positionTopLeft, .Dialog--default.Dialog--positionBottomLeft {
   -webkit-animation: Dialog-enterLeft 0.75s;
           animation: Dialog-enterLeft 0.75s; }
-
 .Dialog--default.Dialog--positionTopRight, .Dialog--default.Dialog--positionBottomRight {
   -webkit-animation: Dialog-enterRight 0.75s;
           animation: Dialog-enterRight 0.75s; }
-
-.Dialog--default.Dialog--positionMiddle {
+.Dialog--default.Dialog--positionMiddle .Dialog-content {
   -webkit-animation: Dialog-enterZoom 0.5625s;
           animation: Dialog-enterZoom 0.5625s; }
 
@@ -379,17 +379,17 @@
 
   0% {
     opacity: 0;
-    -webkit-transform: translateY(-50%) scale3d(0.3, 0.3, 0.3);
-            transform: translateY(-50%) scale3d(0.3, 0.3, 0.3); }
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+            transform: scale3d(0.3, 0.3, 0.3); }
 
   60% {
-    -webkit-transform: translateY(-50%) scale3d(1.05, 1.05, 1.05);
-            transform: translateY(-50%) scale3d(1.05, 1.05, 1.05); }
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+            transform: scale3d(1.05, 1.05, 1.05); }
 
   100% {
     opacity: 1;
-    -webkit-transform: translateY(-50%) scale3d(1, 1, 1);
-            transform: translateY(-50%) scale3d(1, 1, 1); } }
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1); } }
 
 @keyframes Dialog-enterZoom {
   0%, 60%, 100% {
@@ -397,17 +397,17 @@
 
   0% {
     opacity: 0;
-    -webkit-transform: translateY(-50%) scale3d(0.3, 0.3, 0.3);
-            transform: translateY(-50%) scale3d(0.3, 0.3, 0.3); }
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+            transform: scale3d(0.3, 0.3, 0.3); }
 
   60% {
-    -webkit-transform: translateY(-50%) scale3d(1.05, 1.05, 1.05);
-            transform: translateY(-50%) scale3d(1.05, 1.05, 1.05); }
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+            transform: scale3d(1.05, 1.05, 1.05); }
 
   100% {
     opacity: 1;
-    -webkit-transform: translateY(-50%) scale3d(1, 1, 1);
-            transform: translateY(-50%) scale3d(1, 1, 1); } }
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1); } }
 
 /* State: has modal 
  ***************************************/

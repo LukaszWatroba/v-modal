@@ -5,6 +5,7 @@
 
 /* Settings */
 $modal-spacing: 20px;
+$modal-fade-duration: 0.5s;
 $modal-enter-duration: 0.75s;
 $modal-zindex: 1000;
 $modal-backdrop-color: rgba(0,0,0, 0.6);
@@ -44,7 +45,7 @@ $dialog-sm-size: 400px;
 /* Modifier: default modal */
 
 .Modal--default {
-  transition: opacity 0.25s;
+  transition: opacity $modal-fade-duration;
 
   &.ng-enter,
   &.ng-leave.ng-leave-active {
@@ -154,14 +155,11 @@ $dialog-sm-size: 400px;
   }
 }
 .Dialog--positionMiddle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-
-  .Dialog-content {
-    margin: 0 auto;
-  }
+  height: 100%;
 }
 .Dialog--positionTopLeft {
   position: absolute;
@@ -187,19 +185,21 @@ $dialog-sm-size: 400px;
 
 /* Modifier: default dialog */
 
-.Dialog--default.Dialog--positionCenter {
-  animation: Dialog-enterDown $modal-enter-duration;
-}
-.Dialog--default.Dialog--positionTopLeft,
-.Dialog--default.Dialog--positionBottomLeft {
-  animation: Dialog-enterLeft $modal-enter-duration;
-}
-.Dialog--default.Dialog--positionTopRight,
-.Dialog--default.Dialog--positionBottomRight {
-  animation: Dialog-enterRight $modal-enter-duration;
-}
-.Dialog--default.Dialog--positionMiddle {
-  animation: Dialog-enterZoom $modal-enter-duration * 0.75;
+.Dialog--default {
+  &.Dialog--positionCenter {
+    animation: Dialog-enterDown $modal-enter-duration;
+  }
+  &.Dialog--positionTopLeft,
+  &.Dialog--positionBottomLeft {
+    animation: Dialog-enterLeft $modal-enter-duration;
+  }
+  &.Dialog--positionTopRight,
+  &.Dialog--positionBottomRight {
+    animation: Dialog-enterRight $modal-enter-duration;
+  }
+  &.Dialog--positionMiddle .Dialog-content {
+    animation: Dialog-enterZoom $modal-enter-duration * 0.75;
+  }
 }
 
 .Dialog--default .Dialog-content {
@@ -364,16 +364,16 @@ $dialog-sm-size: 400px;
 
   0% {
     opacity: 0;
-    transform: translateY(-50%) scale3d(.3, .3, .3);
+    transform: scale3d(.3, .3, .3);
   }
 
   60% {
-    transform: translateY(-50%) scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
   }
 
   100% {
     opacity: 1;
-    transform: translateY(-50%) scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
   }
 }
 
