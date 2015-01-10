@@ -1,7 +1,7 @@
 {
   "name": "v-modal",
   "description": "vModal - Simple, flexible and beautiful modal dialogs in AngularJS",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "author": "Łukasz Wątroba <l@lukaszwatroba.com>",
   "license": "MIT",
   "keywords": [
