@@ -33,9 +33,12 @@ $dialog-sm-size: 400px;
   width: 100%;
   height: 100%;
   z-index: $modal-zindex;
-  background-color: $modal-backdrop-color;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+.Modal--withBackdrop {
+  background-color: $modal-backdrop-color;
 }
 
 

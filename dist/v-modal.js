@@ -18,8 +18,7 @@ angular.module('vModal.config', [])
     containerSelector: 'body',
     
     classes: {
-      modal:  'Modal Modal--default',
-      modalWithBackdrop:  'Modal--withBackdrop',
+      modal:  'Modal Modal--withBackdrop Modal--default',
 
       dialog: 'Dialog Dialog--default',
       dialogContent: 'Dialog-content',
