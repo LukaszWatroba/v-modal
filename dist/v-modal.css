@@ -32,7 +32,7 @@
  ***************************************/
 /* Modifier: default modal */
 .Modal--default {
-  transition: opacity 0.5s; }
+  transition: opacity 0.25s; }
   .Modal--default.ng-enter, .Modal--default.ng-leave.ng-leave-active {
     opacity: 0; }
   .Modal--default.ng-leave, .Modal--default.ng-enter.ng-enter-active {
@@ -51,9 +51,12 @@
   </v-dialog>
  */
 .Dialog {
-  padding: 20px;
+  padding: 10px;
   z-index: 10;
   pointer-events: none; }
+  @media (min-width: 20em) {
+    .Dialog {
+      padding: 20px; } }
 
 .Dialog-content {
   position: relative;

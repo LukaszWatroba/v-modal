@@ -5,7 +5,7 @@
 
 /* Settings */
 $modal-spacing: 20px;
-$modal-fade-duration: 0.5s;
+$modal-fade-duration: 0.25s;
 $modal-enter-duration: 0.75s;
 $modal-zindex: 1000;
 $modal-backdrop-color: rgba(0,0,0, 0.6);
@@ -77,9 +77,13 @@ $dialog-sm-size: 400px;
 
 
 .Dialog {
-  padding: $modal-spacing;
+  padding: $modal-spacing / 2;
   z-index: 10;
   pointer-events: none;
+
+  @media (min-width: 20em) {
+    padding: $modal-spacing;
+  }
 }
 
 .Dialog-content {
