@@ -71,6 +71,7 @@ angular.module('myApp', ['vModal'])
   - `small`
   - `medium`
   - `large`
+  - `full`
 
 ```html
 <v-dialog size="large"></v-dialog>
