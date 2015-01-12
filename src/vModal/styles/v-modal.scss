@@ -4,17 +4,12 @@
 
 
 /* Settings */
-$modal-spacing: 20px;
-$modal-fade-duration: 0.25s;
-$modal-enter-duration: 0.75s;
+
+$modal-spacing: 20px !default;
+$modal-fade-duration: 0.25s !default;
+$modal-enter-duration: 0.75s !default;
 $modal-zindex: 1000;
-$modal-backdrop-color: rgba(0,0,0, 0.6);
-
-$dialog-bg-color: white;
-$dialog-md-size: 640px; 
-$dialog-lg-size: 800px;
-$dialog-sm-size: 400px;
-
+$modal-backdrop-color: rgba(0,0,0, 0.6) !default;
 
 
 /**
@@ -68,6 +63,18 @@ $dialog-sm-size: 400px;
  ***************************************/
 
 
+/* Settings */
+
+$dialog-bg-color: white !default;
+$dialog-md-size: 640px !default; 
+$dialog-lg-size: 800px !default;
+$dialog-sm-size: 400px !default;
+
+$dialog-close-color: #2196F3;
+$dialog-close-hover-color: #F44336;
+$dialog-close-hover-duration: 0.25s;
+
+
 /**
  * Example HTML:
  *
@@ -109,7 +116,6 @@ $dialog-sm-size: 400px;
   border: 0;
 
   font: inherit;
-  color: #2196F3;
 
   text-decoration: none;
   user-select: none;
@@ -121,7 +127,6 @@ $dialog-sm-size: 400px;
   &:hover,
   &:focus,
   &:active {
-    color: darken(#2196F3, 10%);
     text-decoration: none;
     outline: 0;
     background-image: none;
@@ -237,7 +242,7 @@ $dialog-sm-size: 400px;
   padding: 0;
   z-index: 10;
 
-  transition: transform 0.25s;
+  transition: transform $dialog-close-hover-duration;
 
   span {
     position: absolute;
@@ -258,8 +263,8 @@ $dialog-sm-size: 400px;
     left: 12px;
     height: 1px;
     width: 16px;
-    background-color: #2196F3;
-    transition: background-color 0.25s, transform 0.25s;
+    background-color: $dialog-close-color;
+    transition: background-color $dialog-close-hover-duration, transform $dialog-close-hover-duration;
     transform-origin: 50% 50%;
   }
 
@@ -276,7 +281,7 @@ $dialog-sm-size: 400px;
 
     &::before,
     &::after {
-      background-color: #F44336;
+      background-color: $dialog-close-hover-color;
     }
   }
 }
