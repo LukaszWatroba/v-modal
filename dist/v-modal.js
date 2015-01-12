@@ -32,7 +32,8 @@ angular.module('vModal.config', [])
       sizes: {
         'medium': 'Dialog--sizeMd',
         'large': 'Dialog--sizeLg',
-        'small': 'Dialog--sizeSm'
+        'small': 'Dialog--sizeSm',
+        'full': 'Dialog--sizeFull'
       },
 
       positions: {

@@ -106,6 +106,9 @@
 .Dialog--sizeSm .Dialog-content {
   max-width: 400px; }
 
+.Dialog--sizeFull .Dialog-content {
+  max-width: 100%; }
+
 /* Modifiers: position */
 .Dialog--positionCenter {
   width: 100%;

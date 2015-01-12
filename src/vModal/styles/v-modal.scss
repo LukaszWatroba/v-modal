@@ -154,6 +154,9 @@ $dialog-close-hover-duration: 0.25s;
 .Dialog--sizeSm .Dialog-content {
   max-width: $dialog-sm-size;
 }
+.Dialog--sizeFull .Dialog-content {
+  max-width: 100%;
+}
 
 
 /* Modifiers: position */
