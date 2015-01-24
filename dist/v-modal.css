@@ -7,9 +7,11 @@
  */
 
 /***************************************
-  Modal
+  vModal
  ***************************************/
-/* Settings */
+/***************************************
+  vModal: Modal
+ ***************************************/
 /**
  * Example HTML:
  *
@@ -27,12 +29,13 @@
   overflow-x: hidden;
   overflow-y: auto; }
 
+/* Modal modifires
+ ***************************************/
 .Modal--withBackdrop {
   background-color: rgba(0, 0, 0, 0.6); }
 
-/* Modal modifires
- ***************************************/
-/* Modifier: default modal */
+/* Modal theme: default
+   ***************************************/
 .Modal--default {
   transition: opacity 0.25s; }
   .Modal--default.ng-enter, .Modal--default.ng-leave.ng-leave-active {
@@ -41,9 +44,8 @@
     opacity: 1; }
 
 /***************************************
-  Dialog
+  vModal: Dialog
  ***************************************/
-/* Settings */
 /**
  * Example HTML:
  *
@@ -149,7 +151,8 @@
   bottom: 0;
   right: 0; }
 
-/* Modifier: default dialog */
+/* Dialog theme: default
+   ***************************************/
 .Dialog--default.Dialog--positionCenter {
   -webkit-animation: Dialog-enterDown 0.75s;
           animation: Dialog-enterDown 0.75s; }
@@ -223,8 +226,7 @@
     .Dialog--default .Dialog-close:hover::before, .Dialog--default .Dialog-close:hover::after {
       background-color: #F44336; }
 
-/* Dialog animations
- ***************************************/
+/* Theme: default (animations) */
 @-webkit-keyframes Dialog-enterDown {
   0%, 60%, 75%, 90%, 100% {
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
@@ -416,6 +418,9 @@
     -webkit-transform: scale3d(1, 1, 1);
             transform: scale3d(1, 1, 1); } }
 
+/***************************************
+  vModal: Utils
+ ***************************************/
 /* State: has modal 
  ***************************************/
 .has-modal {
