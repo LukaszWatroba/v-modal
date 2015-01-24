@@ -26,6 +26,7 @@ module.exports = function(config) {
       'bower/angular-animate/angular-animate.js',
       'src/vModal/*.js',
       'src/vModal/directives/*.js',
+      'src/vModal/services/*.js',
       'test/unit/**/*.js'
     ],
 

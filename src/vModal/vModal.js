@@ -39,7 +39,7 @@ angular.module('vModal.config', [])
 
 // Modules
 angular.module('vModal.directives', []);
-angular.module('vModal.services', [ 'ngAnimate' ]);
+angular.module('vModal.services', []);
 angular.module('vModal',
   [
     'ngAnimate',
