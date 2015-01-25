@@ -126,8 +126,8 @@
 }
 
 
-@if $default-theme {
-  /* Dialog theme: default
+@if $modal-default-theme {
+  /* Theme: default
    ***************************************/
 
   .Dialog--default {
