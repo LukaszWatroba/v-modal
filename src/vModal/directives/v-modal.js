@@ -5,47 +5,36 @@ angular.module('vModal.directives')
   .directive('vModal', vModalDirective);
 
 
-function vModalDirective (modalConfig) {
+function vModalDirective () {
   return {
     restrict: 'AE',
-    replace: true,
     transclude: true,
-    template: '<div ng-click="modalCtrl.close($event)" ng-transclude></div>',
-    controller: vModalDirectiveController,
-    controllerAs: 'modalCtrl',
     scope: {
-      close: '&?'
+      closeMethod: '&?onclose'
     },
-    compile: function (tElement, tAttrs) {
-      tElement.addClass(modalConfig.classes.modal);
+    link: function (scope, iElement, iAttrs, ctrl, transclude) {
+      transclude(scope.$parent, function(clone) {
+        iElement.append(clone);
+      });
 
-      return function postLink (scope, iElement, iAttrs) {
-        scope.hasClose = angular.isDefined(iAttrs.close);
-      };
-    }
-  };
-}
-vModalDirective.$inject = ['modalConfig'];
-
-
-// vModal directive controller
-function vModalDirectiveController ($scope, modalConfig) {
-  var ctrl = this;
-
-  ctrl.hasClose = function () {
-    return $scope.hasClose;
-  };
-
-  ctrl.close = function (event) {
-    if (!event) {
-      $scope.close();
-    } else {
-      var target = angular.element(event.target);
-
-      if (target.hasClass(modalConfig.classes.modal)) {
-        $scope.close();
+      function isClose (el) {
+        while (el.tagName !== 'V-CLOSE') {
+          el = el.parentNode;
+          if (!el) {
+            return false;
+          }
+        }
+        return true;
       }
+
+      iElement.on('click', function (event) {
+        var isBackdrop = (event.target.tagName === 'V-MODAL');
+
+        if (isBackdrop || isClose(event.target)) {
+          scope.$apply(function () { scope.closeMethod(); });
+        }
+      });
     }
   };
 }
-vModalDirectiveController.$inject = ['$scope', 'modalConfig'];
+

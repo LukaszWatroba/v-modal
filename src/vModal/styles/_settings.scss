@@ -3,28 +3,26 @@
 // -------------------------------------
 
 
-$modal-default-theme: true !default;
+$v-modal-default-theme: true !default;
 
 
 // Modal
 // -------------------------------------
 
-$modal-spacing:         20px  !default;
-$modal-fade-duration:   0.25s !default;
-$modal-enter-duration:  0.75s !default;
-$modal-zindex:          1000  !default;
-$modal-backdrop-color:  rgba(0,0,0, 0.6) !default;
+$v-modal-spacing:    20px !default;
 
+$v-modal-zindex:     1000             !default;
+$v-modal-backdrop:   rgba(0,0,0, 0.6) !default;
 
-// Dialog
-// -------------------------------------
+$v-dialog-background:       white !default;
+$v-dialog-border-radius:    2px   !default;
+$v-dialog-enter-duration:   0.75s !default;
 
-$dialog-bg-color:   white !default;
-$dialog-md-size:    640px !default; 
-$dialog-lg-size:    800px !default;
-$dialog-sm-size:    400px !default;
+$v-dialog-sm-width:   380px !default;
+$v-dialog-md-width:   640px !default;
+$v-dialog-lg-width:   860px !default;
 
-$dialog-close-color:            #2196F3 !default;
-$dialog-close-hover-color:      #F44336 !default;
-$dialog-close-hover-duration:   0.25s   !default;
+$v-close-color:            #2196F3 !default;
+$v-close-hover-color:      #F44336 !default;
+$v-close-hover-duration:   0.25s   !default;
 

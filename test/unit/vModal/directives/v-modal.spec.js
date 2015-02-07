@@ -7,6 +7,7 @@ describe('v-modal directive', function () {
   var generateTemplate = function (options) {
     var dafaults = {
       closeMethod: false,
+      closeButton: false,
       transcludedContent: ''
     };
 
@@ -15,8 +16,9 @@ describe('v-modal directive', function () {
     }
 
     var template = '<v-modal';
-        template += (dafaults.closeMethod) ? ' close="closeModal()"' : '';
-        template += '>\n';
+        template += (dafaults.closeMethod) ? ' onclose="closeModal()"' : '';
+        template += '>';
+        template += (dafaults.closeButton) ? '<v-close></v-close>' : '';
         template += dafaults.transcludedContent;
         template += '</v-modal>';
 
@@ -35,17 +37,6 @@ describe('v-modal directive', function () {
 
   afterEach(function () {
     scope.$destroy();
-  });
-
-
-
-  it('should replace `v-modal` with `div` element and add a `Modal` class', function () {
-    var template = generateTemplate();
-
-    var modal = $compile(template)(scope);
-
-    expect(modal.hasClass(modalConfig.classes.modal)).toBe(true);
-    expect(modal.prop('tagName')).toBe('DIV');
   });
 
 
@@ -72,6 +63,21 @@ describe('v-modal directive', function () {
     spyOn(scope, 'closeModal');
 
     modal.click();
+    
+    expect(scope.closeModal).toHaveBeenCalled();
+  });
+
+  it('should call `closeModal` method when on `v-close` click', function () {
+    var template = generateTemplate({ closeMethod: true, closeButton: true });
+    var modal = $compile(template)(scope);
+    var vClose = modal.find('v-close');
+
+    scope.closeModal = function () {};
+    scope.$digest();
+
+    spyOn(scope, 'closeModal');
+
+    vClose.click();
     
     expect(scope.closeModal).toHaveBeenCalled();
   });

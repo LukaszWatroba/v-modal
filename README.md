@@ -32,38 +32,31 @@ angular.module('myApp', ['vModal'])
 })
 
 .controller('MyCtrl', function (myModal) {
-  this.openMyModal = myModal.activate;
+  this.show = myModal.activate;
 });
 ```
 
-> my-modal.html
-
-```html
-<v-modal close="modal.close()">
-  <v-dialog size="small" position="middle">
-
-    <v-dialog-header>
-      Dialog header
-    </v-dialog-header>
-
-    <v-dialog-body>
-      Dialog content
-    </v-dialog-body>
-
-    <v-dialog-footer>
-      Dialog footer
-    </v-dialog-footer>
-
-  </v-dialog>
-</v-modal>
-```
 
 > index.html
 
 ```html
 <div ng-app="myApp" ng-controller="MyCtrl as ctrl">
-  <a href ng-click="ctrl.openMyModal()">Show the modal</a>
+  <a href ng-click="ctrl.show()">Show</a>
 </div>
+```
+
+
+> my-modal.html
+
+```html
+<v-modal class="vModal--default" onclose="modal.close()">
+  <v-dialog role="dialog" aria-labelby="helloWorld" small middle>
+    <v-close role="button" tabindex="0" aria-label="Close"></v-close>
+    
+    <h3 id="helloWorld">Hello World!</h3>
+
+  </v-dialog>
+</v-modal>
 ```
 
 
@@ -71,68 +64,19 @@ angular.module('myApp', ['vModal'])
   - `small`
   - `medium`
   - `large`
-  - `full`
+  - `fit`
 
 ```html
-<v-dialog size="large"></v-dialog>
+<v-dialog large></v-dialog>
 ```
 
 
 ### Positions
-  - `center`
-  - `middle`
-  - `top-left`
-  - `top-right`
-  - `bottom-left`
-  - `bottom-right`
+  - `center` (default)
+  - `middle` 
 
 ```html
-<v-dialog position="top-right"></v-dialog>
-```
-
-
-## Config
-
-```js
-angular
-  .module('myApp', [ 'vModal' ])
-
-  .config(function (modalConfig) {
-    
-    modalConfig = {
-      closeButtonText: 'Close',
-      containerSelector: 'body',
-      
-      classes: {
-        modal:  'Modal Modal--withBackdrop Modal--default',
-
-        dialog: 'Dialog Dialog--default',
-        dialogContent: 'Dialog-content',
-        dialogHeader: 'Dialog-header',
-        dialogFooter: 'Dialog-footer',
-        dialogBody: 'Dialog-body',
-        dialogClose: 'Dialog-close',
-
-        hasModalState: 'has-modal',
-
-        sizes: {
-          'medium': 'Dialog--sizeMd',
-          'large': 'Dialog--sizeLg',
-          'small': 'Dialog--sizeSm'
-        },
-
-        positions: {
-          'center': 'Dialog--positionCenter',
-          'middle': 'Dialog--positionMiddle',
-          'top-left': 'Dialog--positionTopLeft',
-          'top-right': 'Dialog--positionTopRight',
-          'bottom-left': 'Dialog--positionBottomLeft',
-          'bottom-right': 'Dialog--positionBottomRight',
-        }
-      }
-    };
-    
-  })
+<v-dialog middle></v-dialog>
 ```
 
 

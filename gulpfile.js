@@ -74,7 +74,7 @@ gulp.task('lint-tests', function() {
 gulp.task('default', ['lint-src', 'test', 'scripts', 'styles']);
 
 gulp.task('watch', function() {
-  gulp.watch('src/vModal/**/*.js', ['lint-src', 'test', 'scripts']);
+  gulp.watch('src/vModal/**/*.js', ['lint-src', 'scripts']);
   gulp.watch('test/**/*.spec.js', ['lint-tests', 'test']);
   
   gulp.watch('src/vModal/styles/**/*.scss', ['styles']);

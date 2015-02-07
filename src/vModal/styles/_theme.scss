@@ -1,0 +1,115 @@
+@if $v-modal-default-theme {
+  /* Theme: default
+   ***************************************/
+
+  
+  .vModal--default {
+    will-change: opacity;
+    transition: opacity $v-dialog-enter-duration * 0.5;
+
+    v-dialog {
+      will-change: transform;
+      padding: $v-modal-spacing;
+      border-radius: $v-dialog-border-radius;
+      animation: vDialog-enterDown $v-dialog-enter-duration;
+    }
+
+    v-dialog[middle] {
+      animation: vDialog-enterZoom $v-dialog-enter-duration * 0.75;
+    }
+
+    v-close {
+      width: 30px;
+      height: 30px;
+      margin: 5px;
+      border-radius: 50%;
+      background-color: white;
+
+      &::after,
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 7px;
+        height: 1px;
+        width: 16px;
+        transform-origin: 50% 50%;
+      }
+
+      &::before {
+        transform: rotate(-45deg);
+      }
+      &::after {
+        transform: rotate(45deg);
+      }
+
+      &::after,
+      &::before {
+        background-color: $v-close-color;
+        transition: background-color $v-close-hover-duration;
+      }
+
+      &:hover,
+      &:focus {
+        &::after,
+        &::before {
+          background-color: $v-close-hover-color;
+        }
+      }
+    }
+
+    &.ng-enter {
+      opacity: 0;
+    }
+    &.ng-enter-active {
+      opacity: 1;
+    }
+    &.ng-leave {
+      opacity: 1;
+    }
+    &.ng-leave-active {
+      opacity: 0;
+    }
+  }
+
+
+  /* Theme: default (animations) */
+
+  @keyframes vDialog-enterDown {
+    0%, 60%, 75%, 90%, 100% {
+      transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+    0% {
+      transform: translate3d(0, -3000px, 0);
+    }
+    60% {
+      transform: translate3d(0, 25px, 0);
+    }
+    75% {
+      transform: translate3d(0, -10px, 0);
+    }
+    90% {
+      transform: translate3d(0, 5px, 0);
+    }
+    100% {
+      transform: none;
+    }
+  }
+
+  @keyframes vDialog-enterZoom {
+    0%, 60%, 100% {
+      transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+    0% {
+      transform: scale3d(.3, .3, .3);
+    }
+    60% {
+      transform: scale3d(1.05, 1.05, 1.05);
+    }
+    100% {
+      transform: scale3d(1, 1, 1);
+    }
+  }
+
+}

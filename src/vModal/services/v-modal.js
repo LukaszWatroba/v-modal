@@ -1,4 +1,10 @@
-
+/*
+ * @license
+ * angular-modal v0.4.0
+ * (c) 2013 Brian Ford http://briantford.com
+ * License: MIT
+ */
+    
 
 // vModal service
 angular.module('vModal.services')
@@ -7,7 +13,6 @@ angular.module('vModal.services')
 
 function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, $templateCache, $document, modalConfig) {
   return function modalFactory (config) {
-
     if (!(!config.template ^ !config.templateUrl)) {
       throw new Error('Expected modal to have exacly one of either `template` or `templateUrl`');
     }
@@ -49,7 +54,7 @@ function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, 
       }
 
       $animate.enter(element, container);
-      container.addClass(modalConfig.classes.hasModalState);
+      container.attr('v-modal-open', '');
       scope = $rootScope.$new();
 
       if (locals) {
@@ -74,7 +79,7 @@ function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, 
           .leave(element)
           .then(function () {
             scope.$destroy();
-            container.removeClass(modalConfig.classes.hasModalState);
+            container.removeAttr('v-modal-open');
             element = null;
             deferred.resolve();
           });

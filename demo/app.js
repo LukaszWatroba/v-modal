@@ -11,19 +11,12 @@
       $compileProvider.debugInfoEnabled(false);
     })
 
+
     .factory('loginModal', function (vModal) {
       return vModal({
         controller: 'LoginController',
         controllerAs: 'loginModal',
         templateUrl: 'login-modal-template.html'
-      });
-    })
-
-    .factory('promoCodeModal', function (vModal) {
-      return vModal({
-        controller: 'PromoCodeController',
-        controllerAs: 'promoCodeModal',
-        templateUrl: 'promo-code-modal-template.html'
       });
     })
 
@@ -35,15 +28,14 @@
       });
     })
 
-    .controller('MainController', function (loginModal, infoModal, promoCodeModal) {
-      var ctrl = this;
-
-      ctrl.openLoginModal = loginModal.activate;
-
-      ctrl.openPromoCodeModal = promoCodeModal.activate;
-
-      ctrl.openInfoModal = infoModal.activate;
+    .factory('loremModal', function (vModal) {
+      return vModal({
+        controller: 'LoremController',
+        controllerAs: 'loremModal',
+        templateUrl: 'lorem-modal-template.html'
+      });
     })
+
 
     .controller('LoginController', function ($scope, loginModal) {
       var ctrl = this;
@@ -53,20 +45,25 @@
       ctrl.close = loginModal.deactivate;
     })
 
-    .controller('PromoCodeController', function ($scope, promoCodeModal) {
-      var ctrl = this;
-
-      $scope.model = {};
-
-      ctrl.close = promoCodeModal.deactivate;
-    })
-
     .controller('InfoController', function ($scope, infoModal) {
       var ctrl = this;
 
-      $scope.model = {};
-
       ctrl.close = infoModal.deactivate;
+    })
+
+    .controller('LoremController', function ($scope, loremModal) {
+      var ctrl = this;
+
+      ctrl.close = loremModal.deactivate;
+    })
+
+
+    .controller('MainController', function (loginModal, infoModal, loremModal) {
+      var ctrl = this;
+
+      ctrl.openLoginModal = loginModal.activate;
+      ctrl.openInfoModal = infoModal.activate;
+      ctrl.openLoremModal = loremModal.activate;
     });
 
 })(angular);

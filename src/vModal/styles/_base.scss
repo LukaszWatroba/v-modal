@@ -1,0 +1,86 @@
+/* Base
+ ***************************************/
+
+
+v-modal {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: $v-modal-zindex;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: rgba(0,0,0, 0.5);
+  padding: $v-modal-spacing;
+
+  v-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+v-dialog {
+  align-self: flex-start;
+  display: block;
+  position: relative;
+  pointer-events: auto;
+  background: $v-dialog-background;
+  z-index: 10;
+  min-width: 240px;
+}
+
+v-dialog[middle] {
+  align-self: center;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+v-dialog[fit] {
+  width: 100%;
+}
+
+v-dialog[small] {
+  max-width: $v-dialog-sm-width;
+
+  @media (min-width: $v-dialog-sm-width) {
+    min-width: $v-dialog-sm-width;
+  }
+}
+
+v-dialog[medium] {
+  max-width: $v-dialog-md-width;
+
+  @media (min-width: $v-dialog-md-width) {
+    min-width: $v-dialog-md-width;
+  }
+}
+
+v-dialog[large] {
+  max-width: $v-dialog-lg-width;
+
+  @media (min-width: $v-dialog-lg-width) {
+    min-width: $v-dialog-lg-width;
+  }
+}
+
+v-close {
+  display: inline-block;
+  z-index: 10;
+  cursor: pointer;
+  outline: 0;
+  user-select: none;
+  z-index: 20;
+
+  &:hover,
+  &:focus {
+    outline: 0;
+  }
+}
+
+[v-modal-open] {
+  overflow: hidden;
+}

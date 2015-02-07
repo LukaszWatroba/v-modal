@@ -1,6 +1,6 @@
 /**
  * vModal - Simple, flexible and beautiful modal dialogs in AngularJS
- * @version v0.2.3
+ * @version v1.0.0
  * @link http://lukaszwatroba.github.io/v-modal
  * @author Łukasz Wątroba <l@lukaszwatroba.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -12,243 +12,155 @@
 /**
  * Example HTML:
  *
-  <v-modal close="ctrl.closeModal()">
-    <v-dialog>
-      <v-dialog-header>[content]</v-dialog-header>
-      <v-dialog-body>[content]</v-dialog-body>
-      <v-dialog-footer>[content]</v-dialog-footer>
+  <v-modal class="vModal--default" close="[ctrl method]">
+    <v-dialog role="dialog" fit middle>
+      <button aria-label="close" v-close></button>
+      [content]
     </v-dialog>
   </v-modal>
  */
-/***************************************
-  vModal: Modal
+/* Base
  ***************************************/
-/**
- * Example HTML:
- *
-  <v-modal>
-    <v-dialog>[content]</v-dialog>
-  </v-modal>
- */
-.Modal {
+v-modal {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   position: fixed;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 1000;
   overflow-x: hidden;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px; }
+  v-modal v-close {
+    position: absolute;
+    top: 0;
+    right: 0; }
+
+v-dialog {
+  -webkit-align-self: flex-start;
+      -ms-flex-item-align: start;
+          align-self: flex-start;
+  display: block;
+  position: relative;
+  pointer-events: auto;
+  background: white;
+  z-index: 10;
+  min-width: 240px; }
+
+v-dialog[middle] {
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+  max-height: 100%;
   overflow-y: auto; }
 
-/* Modal modifires
- ***************************************/
-.Modal--withBackdrop {
-  background-color: rgba(0, 0, 0, 0.6); }
+v-dialog[fit] {
+  width: 100%; }
 
-/* Modal theme: default
-   ***************************************/
-.Modal--default {
-  transition: opacity 0.25s; }
-  .Modal--default.ng-enter, .Modal--default.ng-leave.ng-leave-active {
-    opacity: 0; }
-  .Modal--default.ng-leave, .Modal--default.ng-enter.ng-enter-active {
-    opacity: 1; }
+v-dialog[small] {
+  max-width: 380px; }
+  @media (min-width: 380px) {
+    v-dialog[small] {
+      min-width: 380px; } }
 
-/***************************************
-  vModal: Dialog
- ***************************************/
-/**
- * Example HTML:
- *
-  <v-dialog size="small" position="middle">
-    <v-dialog-header>[content]</v-dialog-header>
-    <v-dialog-body>[content]</v-dialog-body>
-    <v-dialog-footer>[content]</v-dialog-footer>
-  </v-dialog>
- */
-.Dialog {
-  padding: 10px;
+v-dialog[medium] {
+  max-width: 640px; }
+  @media (min-width: 640px) {
+    v-dialog[medium] {
+      min-width: 640px; } }
+
+v-dialog[large] {
+  max-width: 860px; }
+  @media (min-width: 860px) {
+    v-dialog[large] {
+      min-width: 860px; } }
+
+v-close {
+  display: inline-block;
   z-index: 10;
-  pointer-events: none; }
-  @media (min-width: 20em) {
-    .Dialog {
-      padding: 20px; } }
-
-.Dialog-content {
-  position: relative;
-  background-color: white;
-  pointer-events: auto; }
-
-.Dialog-close {
-  appearance: none;
-  box-sizing: border-box;
-  display: block;
-  margin: 0;
-  padding: 0;
-  vertical-align: middle;
-  text-align: center;
   cursor: pointer;
-  background: transparent;
-  border: 0;
-  font: inherit;
-  text-decoration: none;
+  outline: 0;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  white-space: normal;
-  line-height: normal;
-  font-size: inherit; }
-  .Dialog-close:hover, .Dialog-close:focus, .Dialog-close:active {
-    text-decoration: none;
-    outline: 0;
-    background-image: none; }
+  z-index: 20; }
+  v-close:hover, v-close:focus {
+    outline: 0; }
 
-.Dialog-header, .Dialog-body, .Dialog-footer {
-  position: relative; }
-
-/* Dialog modifires
- ***************************************/
-/* Modifiers: size */
-.Dialog--sizeMd .Dialog-content {
-  max-width: 640px; }
-
-.Dialog--sizeLg .Dialog-content {
-  max-width: 800px; }
-
-.Dialog--sizeSm .Dialog-content {
-  max-width: 400px; }
-
-.Dialog--sizeFull .Dialog-content {
-  max-width: 100%; }
-
-/* Modifiers: position */
-.Dialog--positionCenter {
-  width: 100%;
-  margin: 40px 0; }
-  .Dialog--positionCenter .Dialog-content {
-    margin: 0 auto; }
-
-.Dialog--positionMiddle {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  height: 100%; }
-
-.Dialog--positionTopLeft {
-  position: absolute;
-  top: 0;
-  left: 0; }
-
-.Dialog--positionTopRight {
-  position: absolute;
-  top: 0;
-  right: 0; }
-
-.Dialog--positionBottomLeft {
-  position: absolute;
-  bottom: 0;
-  left: 0; }
-
-.Dialog--positionBottomRight {
-  position: absolute;
-  bottom: 0;
-  right: 0; }
+[v-modal-open] {
+  overflow: hidden; }
 
 /* Theme: default
    ***************************************/
-.Dialog--default.Dialog--positionCenter {
-  -webkit-animation: Dialog-enterDown 0.75s;
-          animation: Dialog-enterDown 0.75s; }
-.Dialog--default.Dialog--positionTopLeft, .Dialog--default.Dialog--positionBottomLeft {
-  -webkit-animation: Dialog-enterLeft 0.75s;
-          animation: Dialog-enterLeft 0.75s; }
-.Dialog--default.Dialog--positionTopRight, .Dialog--default.Dialog--positionBottomRight {
-  -webkit-animation: Dialog-enterRight 0.75s;
-          animation: Dialog-enterRight 0.75s; }
-.Dialog--default.Dialog--positionMiddle .Dialog-content {
-  -webkit-animation: Dialog-enterZoom 0.5625s;
-          animation: Dialog-enterZoom 0.5625s; }
-
-.Dialog--default .Dialog-content {
-  border-radius: 2px;
-  box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.25); }
-
-.Dialog--default .Dialog-header, .Dialog--default .Dialog-body, .Dialog--default .Dialog-footer {
-  padding: 20px; }
-
-.Dialog--default .Dialog-header {
-  border-bottom: 1px solid #F0F0F0; }
-
-.Dialog--default .Dialog-footer {
-  border-top: 1px solid #F0F0F0; }
-
-.Dialog--default .Dialog-close {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  z-index: 10;
-  transition: -webkit-transform 0.25s;
-  transition: transform 0.25s; }
-  .Dialog--default .Dialog-close span {
-    position: absolute;
-    overflow: hidden;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    border: 0;
-    clip: rect(1px, 1px, 1px, 1px); }
-  .Dialog--default .Dialog-close::after, .Dialog--default .Dialog-close::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 12px;
-    height: 1px;
-    width: 16px;
-    background-color: #2196F3;
-    transition: background-color 0.25s, -webkit-transform 0.25s;
-    transition: background-color 0.25s, transform 0.25s;
-    -webkit-transform-origin: 50% 50%;
-        -ms-transform-origin: 50% 50%;
-            transform-origin: 50% 50%; }
-  .Dialog--default .Dialog-close::before {
-    -webkit-transform: rotate(-45deg);
-        -ms-transform: rotate(-45deg);
-            transform: rotate(-45deg); }
-  .Dialog--default .Dialog-close::after {
-    -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg); }
-  .Dialog--default .Dialog-close:hover {
-    -webkit-transform: scale(0.75);
-        -ms-transform: scale(0.75);
-            transform: scale(0.75); }
-    .Dialog--default .Dialog-close:hover::before, .Dialog--default .Dialog-close:hover::after {
+.vModal--default {
+  will-change: opacity;
+  transition: opacity 0.375s; }
+  .vModal--default v-dialog {
+    will-change: transform;
+    padding: 20px;
+    border-radius: 2px;
+    -webkit-animation: vDialog-enterDown 0.75s;
+            animation: vDialog-enterDown 0.75s; }
+  .vModal--default v-dialog[middle] {
+    -webkit-animation: vDialog-enterZoom 0.5625s;
+            animation: vDialog-enterZoom 0.5625s; }
+  .vModal--default v-close {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    border-radius: 50%;
+    background-color: white; }
+    .vModal--default v-close::after, .vModal--default v-close::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 7px;
+      height: 1px;
+      width: 16px;
+      -webkit-transform-origin: 50% 50%;
+          -ms-transform-origin: 50% 50%;
+              transform-origin: 50% 50%; }
+    .vModal--default v-close::before {
+      -webkit-transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg);
+              transform: rotate(-45deg); }
+    .vModal--default v-close::after {
+      -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+              transform: rotate(45deg); }
+    .vModal--default v-close::after, .vModal--default v-close::before {
+      background-color: #2196F3;
+      transition: background-color 0.25s; }
+    .vModal--default v-close:hover::after, .vModal--default v-close:hover::before, .vModal--default v-close:focus::after, .vModal--default v-close:focus::before {
       background-color: #F44336; }
+  .vModal--default.ng-enter {
+    opacity: 0; }
+  .vModal--default.ng-enter-active {
+    opacity: 1; }
+  .vModal--default.ng-leave {
+    opacity: 1; }
+  .vModal--default.ng-leave-active {
+    opacity: 0; }
 
 /* Theme: default (animations) */
-@-webkit-keyframes Dialog-enterDown {
+@-webkit-keyframes vDialog-enterDown {
   0%, 60%, 75%, 90%, 100% {
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
   0% {
-    opacity: 0;
     -webkit-transform: translate3d(0, -3000px, 0);
             transform: translate3d(0, -3000px, 0); }
 
   60% {
-    opacity: 1;
     -webkit-transform: translate3d(0, 25px, 0);
             transform: translate3d(0, 25px, 0); }
 
@@ -263,17 +175,15 @@
   100% {
     -webkit-transform: none;
             transform: none; } }
-@keyframes Dialog-enterDown {
+@keyframes vDialog-enterDown {
   0%, 60%, 75%, 90%, 100% {
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
   0% {
-    opacity: 0;
     -webkit-transform: translate3d(0, -3000px, 0);
             transform: translate3d(0, -3000px, 0); }
 
   60% {
-    opacity: 1;
     -webkit-transform: translate3d(0, 25px, 0);
             transform: translate3d(0, 25px, 0); }
 
@@ -289,116 +199,11 @@
     -webkit-transform: none;
             transform: none; } }
 
-@-webkit-keyframes Dialog-enterLeft {
-  0%, 60%, 75%, 90%, 100% {
-    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
-
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(-3000px, 0, 0);
-            transform: translate3d(-3000px, 0, 0); }
-
-  60% {
-    opacity: 1;
-    -webkit-transform: translate3d(25px, 0, 0);
-            transform: translate3d(25px, 0, 0); }
-
-  75% {
-    -webkit-transform: translate3d(-10px, 0, 0);
-            transform: translate3d(-10px, 0, 0); }
-
-  90% {
-    -webkit-transform: translate3d(5px, 0, 0);
-            transform: translate3d(5px, 0, 0); }
-
-  100% {
-    -webkit-transform: none;
-            transform: none; } }
-
-@keyframes Dialog-enterLeft {
-  0%, 60%, 75%, 90%, 100% {
-    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
-
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(-3000px, 0, 0);
-            transform: translate3d(-3000px, 0, 0); }
-
-  60% {
-    opacity: 1;
-    -webkit-transform: translate3d(25px, 0, 0);
-            transform: translate3d(25px, 0, 0); }
-
-  75% {
-    -webkit-transform: translate3d(-10px, 0, 0);
-            transform: translate3d(-10px, 0, 0); }
-
-  90% {
-    -webkit-transform: translate3d(5px, 0, 0);
-            transform: translate3d(5px, 0, 0); }
-
-  100% {
-    -webkit-transform: none;
-            transform: none; } }
-
-@-webkit-keyframes Dialog-enterRight {
-  0%, 60%, 75%, 90%, 100% {
-    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
-
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(3000px, 0, 0);
-            transform: translate3d(3000px, 0, 0); }
-
-  60% {
-    opacity: 1;
-    -webkit-transform: translate3d(-25px, 0, 0);
-            transform: translate3d(-25px, 0, 0); }
-
-  75% {
-    -webkit-transform: translate3d(10px, 0, 0);
-            transform: translate3d(10px, 0, 0); }
-
-  90% {
-    -webkit-transform: translate3d(-5px, 0, 0);
-            transform: translate3d(-5px, 0, 0); }
-
-  100% {
-    -webkit-transform: none;
-            transform: none; } }
-
-@keyframes Dialog-enterRight {
-  0%, 60%, 75%, 90%, 100% {
-    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
-
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(3000px, 0, 0);
-            transform: translate3d(3000px, 0, 0); }
-
-  60% {
-    opacity: 1;
-    -webkit-transform: translate3d(-25px, 0, 0);
-            transform: translate3d(-25px, 0, 0); }
-
-  75% {
-    -webkit-transform: translate3d(10px, 0, 0);
-            transform: translate3d(10px, 0, 0); }
-
-  90% {
-    -webkit-transform: translate3d(-5px, 0, 0);
-            transform: translate3d(-5px, 0, 0); }
-
-  100% {
-    -webkit-transform: none;
-            transform: none; } }
-
-@-webkit-keyframes Dialog-enterZoom {
+@-webkit-keyframes vDialog-enterZoom {
   0%, 60%, 100% {
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
   0% {
-    opacity: 0;
     -webkit-transform: scale3d(0.3, 0.3, 0.3);
             transform: scale3d(0.3, 0.3, 0.3); }
 
@@ -407,16 +212,14 @@
             transform: scale3d(1.05, 1.05, 1.05); }
 
   100% {
-    opacity: 1;
     -webkit-transform: scale3d(1, 1, 1);
             transform: scale3d(1, 1, 1); } }
 
-@keyframes Dialog-enterZoom {
+@keyframes vDialog-enterZoom {
   0%, 60%, 100% {
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
   0% {
-    opacity: 0;
     -webkit-transform: scale3d(0.3, 0.3, 0.3);
             transform: scale3d(0.3, 0.3, 0.3); }
 
@@ -425,14 +228,5 @@
             transform: scale3d(1.05, 1.05, 1.05); }
 
   100% {
-    opacity: 1;
     -webkit-transform: scale3d(1, 1, 1);
             transform: scale3d(1, 1, 1); } }
-
-/***************************************
-  vModal: Utils
- ***************************************/
-/* State: has modal 
- ***************************************/
-.has-modal {
-  overflow: hidden; }

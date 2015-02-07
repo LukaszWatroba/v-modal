@@ -1,6 +1,6 @@
 /**
  * vModal - Simple, flexible and beautiful modal dialogs in AngularJS
- * @version v0.2.3
+ * @version v1.0.0
  * @link http://lukaszwatroba.github.io/v-modal
  * @author Łukasz Wątroba <l@lukaszwatroba.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -14,37 +14,7 @@
 // Config
 angular.module('vModal.config', [])
   .constant('modalConfig', {
-    closeButtonText: 'Close',
-    containerSelector: 'body',
-    
-    classes: {
-      modal:  'Modal Modal--withBackdrop Modal--default',
-
-      dialog: 'Dialog Dialog--default',
-      dialogContent: 'Dialog-content',
-      dialogHeader: 'Dialog-header',
-      dialogFooter: 'Dialog-footer',
-      dialogBody: 'Dialog-body',
-      dialogClose: 'Dialog-close',
-
-      hasModalState: 'has-modal',
-
-      sizes: {
-        'medium': 'Dialog--sizeMd',
-        'large': 'Dialog--sizeLg',
-        'small': 'Dialog--sizeSm',
-        'full': 'Dialog--sizeFull'
-      },
-
-      positions: {
-        'center': 'Dialog--positionCenter',
-        'middle': 'Dialog--positionMiddle',
-        'top-left': 'Dialog--positionTopLeft',
-        'top-right': 'Dialog--positionTopRight',
-        'bottom-left': 'Dialog--positionBottomLeft',
-        'bottom-right': 'Dialog--positionBottomRight',
-      }
-    }
+    containerSelector: 'body'
   });
 
 
@@ -62,167 +32,52 @@ angular.module('vModal',
 
 
 
-// vDialogBody directive
-angular.module('vModal.directives')
-  .directive('vDialogBody', vDialogBodyDirective);
-
-
-function vDialogBodyDirective (modalConfig) {
-  return {
-    restrict: 'AE',
-    require: '^vDialog',
-    replace: true,
-    transclude: true,
-    template: '<div ng-transclude></div>',
-    compile: function (tElement) {
-      tElement.addClass(modalConfig.classes.dialogBody);
-    }
-  };
-}
-vDialogBodyDirective.$inject = ['modalConfig'];
-
-
-
-
-// vDialogFooter directive
-angular.module('vModal.directives')
-  .directive('vDialogFooter', vDialogFooterDirective);
-
-
-function vDialogFooterDirective (modalConfig) {
-  return {
-    restrict: 'AE',
-    require: '^vDialog',
-    replace: true,
-    transclude: true,
-    template: '<div ng-transclude></div>',
-    compile: function (tElement) {
-      tElement.addClass(modalConfig.classes.dialogFooter);
-    }
-  };
-}
-vDialogFooterDirective.$inject = ['modalConfig'];
-
-
-
-
-// vDialogHeader directive
-angular.module('vModal.directives')
-  .directive('vDialogHeader', vDialogHeaderDirective);
-
-
-function vDialogHeaderDirective (modalConfig) {
-  return {
-    restrict: 'AE',
-    require: '^vDialog',
-    replace: true,
-    transclude: true,
-    template: '<div ng-transclude></div>',
-    compile: function (tElement) {
-      tElement.addClass(modalConfig.classes.dialogHeader);
-    }
-  };
-}
-vDialogHeaderDirective.$inject = ['modalConfig'];
-
-
-
-
-// vDialog directive
-angular.module('vModal.directives')
-  .directive('vDialog', vDialogDirective);
-
-function vDialogDirective (modalConfig) {
-  return {
-    restrict: 'AE',
-    require: '^vModal',
-    replace: true,
-    transclude: true,
-    template: '<div><div><button ng-if="modalCtrl.hasClose()" ng-click="modalCtrl.close()"></button><div ng-transclude></div></div></div>',
-    scope: {
-      size: '@?',
-      position: '@?'
-    },
-    controller: function vDialogDirectiveController () {},
-    compile: function (tElement) {
-      tElement.addClass(modalConfig.classes.dialog);
-
-      var contentElement = angular.element(tElement.find('div')[0]),
-          closeButton = tElement.find('button');
-
-      contentElement
-        .addClass(modalConfig.classes.dialogContent);
-
-      closeButton
-        .addClass(modalConfig.classes.dialogClose)
-        .html('<span>' + modalConfig.closeButtonText + '</span>');
-
-      return function postLink (scope, iElement, iAttrs, modalCtrl) {
-        if (!angular.isDefined(scope.vCenter)) {
-          scope.vCenter = angular.isDefined(iAttrs.vCenter);
-        }
-
-        scope.modalCtrl = modalCtrl;
-
-        iElement.addClass( modalConfig.classes.sizes[ scope.size || 'medium' ] );
-        iElement.addClass( modalConfig.classes.positions[ scope.position || 'center' ] );
-      };
-    }
-  };
-}
-vDialogDirective.$inject = ['modalConfig'];
-
-
 // vModal directive
 angular.module('vModal.directives')
   .directive('vModal', vModalDirective);
 
 
-function vModalDirective (modalConfig) {
+function vModalDirective () {
   return {
     restrict: 'AE',
-    replace: true,
     transclude: true,
-    template: '<div ng-click="modalCtrl.close($event)" ng-transclude></div>',
-    controller: vModalDirectiveController,
-    controllerAs: 'modalCtrl',
     scope: {
-      close: '&?'
+      closeMethod: '&?onclose'
     },
-    compile: function (tElement, tAttrs) {
-      tElement.addClass(modalConfig.classes.modal);
+    link: function (scope, iElement, iAttrs, ctrl, transclude) {
+      transclude(scope.$parent, function(clone) {
+        iElement.append(clone);
+      });
 
-      return function postLink (scope, iElement, iAttrs) {
-        scope.hasClose = angular.isDefined(iAttrs.close);
-      };
-    }
-  };
-}
-vModalDirective.$inject = ['modalConfig'];
-
-
-// vModal directive controller
-function vModalDirectiveController ($scope, modalConfig) {
-  var ctrl = this;
-
-  ctrl.hasClose = function () {
-    return $scope.hasClose;
-  };
-
-  ctrl.close = function (event) {
-    if (!event) {
-      $scope.close();
-    } else {
-      var target = angular.element(event.target);
-
-      if (target.hasClass(modalConfig.classes.modal)) {
-        $scope.close();
+      function isClose (el) {
+        while (el.tagName !== 'V-CLOSE') {
+          el = el.parentNode;
+          if (!el) {
+            return false;
+          }
+        }
+        return true;
       }
+
+      iElement.on('click', function (event) {
+        var isBackdrop = (event.target.tagName === 'V-MODAL');
+
+        if (isBackdrop || isClose(event.target)) {
+          scope.$apply(function () { scope.closeMethod(); });
+        }
+      });
     }
   };
 }
-vModalDirectiveController.$inject = ['$scope', 'modalConfig'];
 
+
+/*
+ * @license
+ * angular-modal v0.4.0
+ * (c) 2013 Brian Ford http://briantford.com
+ * License: MIT
+ */
+    
 
 // vModal service
 angular.module('vModal.services')
@@ -231,7 +86,6 @@ angular.module('vModal.services')
 
 function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, $templateCache, $document, modalConfig) {
   return function modalFactory (config) {
-
     if (!(!config.template ^ !config.templateUrl)) {
       throw new Error('Expected modal to have exacly one of either `template` or `templateUrl`');
     }
@@ -273,7 +127,7 @@ function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, 
       }
 
       $animate.enter(element, container);
-      container.addClass(modalConfig.classes.hasModalState);
+      container.attr('v-modal-open', '');
       scope = $rootScope.$new();
 
       if (locals) {
@@ -298,7 +152,7 @@ function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, 
           .leave(element)
           .then(function () {
             scope.$destroy();
-            container.removeClass(modalConfig.classes.hasModalState);
+            container.removeAttr('v-modal-open');
             element = null;
             deferred.resolve();
           });

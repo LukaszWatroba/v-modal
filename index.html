@@ -34,7 +34,7 @@
       
       <header class="u-marginBl u-textCenter">
         <div>
-          <svg class="u-inlineBlock" width="58px" height="58px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 54"><g><path fill="#4CAF50" d="M3.1,27.9c0,0,10.2-24.1,11.6-27.2c0.2-0.5,0.6-0.8,1.2-0.6c0.5,0.1,0.8,0.7,1.5,2.2c1.3,2.9,18,37.2,18.7,38.6c0.8,1.6,1,2.6,0.7,3.4c-0.3,0.6-1,1.1-1.8,1.4c-2.3,0.9-20.3,7.8-21.5,8.3c-0.7,0.3-0.8-0.4-1.4-1.7C11.6,51,3.7,32.1,3.1,30.7C2.5,29.3,3.1,27.9,3.1,27.9z"/><path fill="#2196F3" d="M50.9,17.3c-0.3-0.3-0.4-0.4-0.7-0.2c-0.3,0.1-11.5,8.6-16.8,12.5c2.7,5.5,4.7,9.7,5,10.2c0.4,0.8,0.8,1.7,1,2.6c0.1-0.2,0.2-0.3,0.3-0.5c0.9-1.8,11.3-23.4,11.5-23.8C51.3,17.7,51.2,17.7,50.9,17.3z"/></g></svg>
+          <svg class="u-inlineBlock" width="58px" height="58px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 54"><g><path fill="#2196F3" d="M3.1,27.9c0,0,10.2-24.1,11.6-27.2c0.2-0.5,0.6-0.8,1.2-0.6c0.5,0.1,0.8,0.7,1.5,2.2c1.3,2.9,18,37.2,18.7,38.6c0.8,1.6,1,2.6,0.7,3.4c-0.3,0.6-1,1.1-1.8,1.4c-2.3,0.9-20.3,7.8-21.5,8.3c-0.7,0.3-0.8-0.4-1.4-1.7C11.6,51,3.7,32.1,3.1,30.7C2.5,29.3,3.1,27.9,3.1,27.9z"/><path fill="#2196F3" d="M50.9,17.3c-0.3-0.3-0.4-0.4-0.7-0.2c-0.3,0.1-11.5,8.6-16.8,12.5c2.7,5.5,4.7,9.7,5,10.2c0.4,0.8,0.8,1.7,1,2.6c0.1-0.2,0.2-0.3,0.3-0.5c0.9-1.8,11.3-23.4,11.5-23.8C51.3,17.7,51.2,17.7,50.9,17.3z"/></g></svg>
           <h2 class="u-marginTs">vModal</h2>
         </div>
         
@@ -45,17 +45,9 @@
       </header>
 
       <div class="u-textCenter u-marginBl">
-        <ul class="ButtonGroup ButtonGroup--hz">
-          <li class="ButtonGroup-item u-marginAs">
-            <button class="Button Button--default Button--lg" ng-click="mainCtrl.openLoginModal()">Example 1</button>
-          </li>
-          <li class="ButtonGroup-item u-marginAs">
-            <button class="Button Button--default Button--lg" ng-click="mainCtrl.openPromoCodeModal()">Example 2</button>
-          </li>
-          <li class="ButtonGroup-item u-marginAs">
-            <button class="Button Button--default Button--lg" ng-click="mainCtrl.openInfoModal()">Example 3</button>
-          </li>
-        </ul>
+        <button class="Button Button--default Button--lg u-marginAs" ng-click="mainCtrl.openLoginModal()">Modal 1</button>
+        <button class="Button Button--default Button--lg u-marginAs" ng-click="mainCtrl.openLoremModal()">Modal 2</button>
+        <button class="Button Button--default Button--lg u-marginAs" ng-click="mainCtrl.openInfoModal()">Modal 3</button>
       </div>
 
       <hr>
@@ -63,13 +55,13 @@
       <footer class="u-cf u-paddingBl">
       
         <div class="u-textCenter">
-          <small>
-          Made with 
-          <svg class="u-inlineBlock u-alignMiddle" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 512 512">
-            <path fill="#F06292" d="M450.703,124.225C410.233,41.419,287.288,47.821,256,119.967c-31.288-72.146-154.233-78.548-194.703,4.257C13.59,221.837,124.309,314.82,256,448.014C387.691,314.82,498.41,221.837,450.703,124.225z"/>
-          </svg>
-          by <a href="http://lukaszwatroba.com" class="u-linkClean">Łukasz Wątroba</a>
-          </small>
+          <a href="https://github.com/LukaszWatroba" class="u-inlineBlock u-linkClean">
+            <svg width="28px" height="28px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 54"><g><path fill="#2196F3" d="M3.1,27.9c0,0,10.2-24.1,11.6-27.2c0.2-0.5,0.6-0.8,1.2-0.6c0.5,0.1,0.8,0.7,1.5,2.2c1.3,2.9,18,37.2,18.7,38.6c0.8,1.6,1,2.6,0.7,3.4c-0.3,0.6-1,1.1-1.8,1.4c-2.3,0.9-20.3,7.8-21.5,8.3c-0.7,0.3-0.8-0.4-1.4-1.7C11.6,51,3.7,32.1,3.1,30.7C2.5,29.3,3.1,27.9,3.1,27.9z"/><path fill="#2196F3" d="M50.9,17.3c-0.3-0.3-0.4-0.4-0.7-0.2c-0.3,0.1-11.5,8.6-16.8,12.5c2.7,5.5,4.7,9.7,5,10.2c0.4,0.8,0.8,1.7,1,2.6c0.1-0.2,0.2-0.3,0.3-0.5c0.9-1.8,11.3-23.4,11.5-23.8C51.3,17.7,51.2,17.7,50.9,17.3z"/></g></svg>
+            <br>
+            <small>
+              By Łukasz Wątroba
+            </small>
+          </a>
         </div>
 
       </footer>
@@ -77,109 +69,82 @@
     </div>
 
 
-    <!-- Login modal example -->
     <script type="text/ng-template" id="login-modal-template.html">
 
-      <v-modal close="loginModal.close()">
-        <v-dialog size="small">
+      <v-modal class="vModal--default" onclose="loginModal.close()">
+        <v-dialog role="dialog" aria-label="Account Login" small>
+          <v-close role="button" tabindex="0" aria-label="Close"></v-close>
 
-          <v-dialog-header>
-            <h3>Account Login</h3>
-          </v-dialog-header>
-
-          <v-dialog-body>
-            <form class="Form" name="loginForm">
-              <div class="Form-item Form-item--stacked">
-                <label class="Form-label" for="emailInput">Email</label>
-                <input class="Input Input--default u-sizeFull" ng-model="model.email" type="email" id="emailInput" name="email" placeholder="hi@yourdomain.com">
-              </div>
-
-              <div class="Form-item Form-item--stacked">
-                <label class="Form-label" for="passwordInput">Password</label>
-                <input class="Input Input--default u-sizeFull" ng-model="model.password" type="password" id="passwordInput" name="password" placeholder="••••••">
-              </div>
-
-              <div class="Form-item u-marginBs">
-                <div class="Checkbox Checkbox--default">
-                  <input id="rememberMeCheckbox" ng-model="model.rememberMe" ng-checked="true" type="checkbox" name="rememberMe">
-                  <label for="rememberMeCheckbox">Remember me</label>
-                </div>
-              </div>
-            </form>
-          </v-dialog-body>
-
-          <v-dialog-footer>
-            <button class="Button Button--default Button--lg" type="button" ng-click="loginModal.close()">Login</button>
-            <small class="u-inlineBlock u-marginHs u-alignMiddle">or</small>
-            <button class="Button" type="button" ng-click="loginModal.close()">Create Account</button>
-          </v-dialog-footer>
-
-        </v-dialog>
-      </v-modal>
-
-    </script>
-
-
-    <!-- Info modal example -->
-    <script type="text/ng-template" id="promo-code-modal-template.html">
-
-      <v-modal close="promoCodeModal.close()">
-        <v-dialog size="small" position="middle">
-
-          <v-dialog-body>
-            <h4 class="u-marginBm">Promo code</h4>
-
-            <form class="Form" name="promoCodeForm">
-
-              <div class="Form-item Form-item--stacked">
-                <label class="Form-label" for="codeInput">Please enter below</label>
-
-                <div class="InputGroup InputGroup--collapse">
-                  <div class="InputGroup-item InputGroup-item--fill">
-                    <input class="Input Input--default" ng-model="model.code" type="text" id="codeInput" name="code" placeholder="Your promo code">
-                  </div>
-                  <div class="InputGroup-item">
-                    <button class="Button Button--default" type="button" ng-click="promoCodeModal.close()">Apply&nbsp;code</button>
-                  </div>
-                </div>
-              </div>
-
-            </form>
-
-          </v-dialog-body>
-
-        </v-dialog>
-      </v-modal>
-
-    </script>
-
-
-    <!-- Info modal example -->
-    <script type="text/ng-template" id="info-modal-template.html">
-
-      <v-modal>
-        <v-dialog position="top-right">
-
-          <v-dialog-body>
-            <h4 class="u-marginBs">vModal</h4>
-
-            <p>
-              Simple, flexible and beautiful modal dialogs in AngularJS.<br>
-              <small><i>Click on the "Cancel" button to close this dialog.</i></small>
-            </p>
-
-            <div class="u-marginTm">
-              
-              <a class="Button Button--default u-marginRm" href="https://github.com/LukaszWatroba/v-modal" target="_blank">Fork me on GitHub</a>
-              <button class="Button" type="button" ng-click="infoModal.close()">Cancel</button>
+          <h3 class="u-marginBm">Account Login</h3>
+          
+          <form class="Form" name="loginForm">
+            <div class="Form-item Form-item--stacked">
+              <label class="Form-label" for="emailInput">Email</label>
+              <input class="Input Input--default u-sizeFull" ng-model="model.email" type="email" id="emailInput" name="email" placeholder="hi@yourdomain.com">
             </div>
-          </v-dialog-body>
 
+            <div class="Form-item Form-item--stacked">
+              <label class="Form-label" for="passwordInput">Password</label>
+              <input class="Input Input--default u-sizeFull" ng-model="model.password" type="password" id="passwordInput" name="password" placeholder="••••••">
+            </div>
+
+            <div class="Form-item u-marginBs">
+              <div class="Checkbox Checkbox--default">
+                <input id="rememberMeCheckbox" ng-model="model.rememberMe" ng-checked="true" type="checkbox" name="rememberMe">
+                <label for="rememberMeCheckbox">Remember me</label>
+              </div>
+            </div>
+          </form>
+
+          <hr>
+          
+          <div>
+            <button class="Button Button--default Button--lg">Login</button>
+            <small class="u-inlineBlock u-marginHs u-alignMiddle">or</small>
+            <button class="Button">Create Account</button>
+          </div>
+          
+        </v-dialog>
+      </v-modal>
+
+    </script>
+  
+
+    <script  type="text/ng-template" id="lorem-modal-template.html">
+
+      <v-modal class="vModal--default" onclose="loremModal.close()">
+        <v-dialog role="dialog" aria-label="Lorem ipsum" large middle>
+          <v-close role="button" tabindex="0" aria-label="Close"></v-close>
+
+          <h3 class="u-marginBm">Lorem ipsum</h3>
+
+          <p class="u-marginBm">
+            Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. Aliquam erat ac ipsum. Integer aliquam purus. Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo vel bibendum sapien massa ac turpis faucibus orci luctus non, consectetuer lobortis quis, varius in, purus. Integer ultrices posuere cubilia Curae, Nulla ipsum dolor lacus, suscipit adipiscing. Cum sociis natoque penatibus et ultrices volutpat. Nullam wisi ultricies a, gravida vitae, dapibus risus ante sodales lectus blandit eu, tempor diam pede cursus vitae, ultricies eu, faucibus quis, porttitor eros cursus lectus, pellentesque eget, bibendum a, gravida ullamcorper quam. Nullam viverra consectetuer. Quisque cursus et, porttitor risus. Aliquam sem. In hendrerit nulla quam nunc, accumsan congue. Lorem ipsum primis in nibh vel risus. Sed vel lectus. Ut sagittis, ipsum dolor quam.
+          </p>
         </v-dialog>
       </v-modal>
 
     </script>
     
+
+    <script type="text/ng-template" id="info-modal-template.html">
+
+      <v-modal class="vModal--default">
+        <v-dialog role="dialog" aria-label="Info" middle>
+          <p>
+            vModal - Simple, flexible and beautiful modal dialogs in AngularJS.<br>
+            <small><i>Click on the "Cancel" button to close this dialog.</i></small>
+          </p>
+
+          <div class="u-marginTm">
+            <a class="Button Button--default u-marginRm" href="https://github.com/LukaszWatroba/v-modal" target="_blank">Fork me on GitHub</a>
+            <button class="Button" ng-click="infoModal.close()">Cancel</button>
+          </div>
+        </v-dialog>
+      </v-modal>
+
+    </script>
+
 
     <!-- Fork me on GitHub ribbon -->
     <a href="https://github.com/LukaszWatroba/v-modal"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
