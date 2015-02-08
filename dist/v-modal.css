@@ -52,7 +52,10 @@ v-dialog {
   pointer-events: auto;
   background: white;
   z-index: 10;
-  min-width: 240px; }
+  min-width: 240px;
+  outline: 0; }
+  v-dialog:focus {
+    outline: 0; }
 
 v-dialog[middle] {
   -webkit-align-self: center;

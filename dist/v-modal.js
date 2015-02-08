@@ -32,6 +32,66 @@ angular.module('vModal',
 
 
 
+// vClose directive
+angular.module('vModal.directives')
+  .directive('vClose', vCloseDirective);
+
+
+function vCloseDirective () {
+  return {
+    restrict: 'E',
+    scope: {
+      label: '@'
+    },
+    link: function (scope, iElement, iAttrs) {
+      if (scope.label) {
+        iAttrs.$set('aria-label', scope.label);
+      }
+
+      iAttrs.$set('role', 'button');
+      iAttrs.$set('tabindex', 0);
+    }
+  };
+}
+
+
+
+
+// vDialog directive
+angular.module('vModal.directives')
+  .directive('vDialog', vDialogDirective);
+
+
+function vDialogDirective () {
+  return {
+    restrict: 'AE',
+    transclude: true,
+    scope: {
+      heading: '@',
+      role: '@'
+    },
+    link: function (scope, iElement, iAttrs, ctrl, transclude) {
+      transclude(scope.$parent, function(clone) {
+        iElement.append(clone);
+      });
+
+      if (scope.heading) {
+        iAttrs.$set('aria-label', scope.heading);
+      }
+
+      if (!scope.role) {
+        iAttrs.$set('role', 'dialog');
+      }
+
+      iAttrs.$set('tabindex', -1);
+      iElement[0].focus();
+    }
+  };
+}
+
+
+
+
 // vModal directive
 angular.module('vModal.directives')
   .directive('vModal', vModalDirective);

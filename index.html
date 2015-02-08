@@ -72,10 +72,10 @@
     <script type="text/ng-template" id="login-modal-template.html">
 
       <v-modal class="vModal--default" onclose="loginModal.close()">
-        <v-dialog role="dialog" aria-label="Account Login" small>
-          <v-close role="button" tabindex="0" aria-label="Close"></v-close>
+        <v-dialog heading="Account Login" small>
+          <v-close label="Close"></v-close>
 
-          <h3 class="u-marginBm">Account Login</h3>
+          <h3 id="loginModalHeading" class="u-marginBm">Account Login</h3>
           
           <form class="Form" name="loginForm">
             <div class="Form-item Form-item--stacked">
@@ -113,8 +113,8 @@
     <script  type="text/ng-template" id="lorem-modal-template.html">
 
       <v-modal class="vModal--default" onclose="loremModal.close()">
-        <v-dialog role="dialog" aria-label="Lorem ipsum" large middle>
-          <v-close role="button" tabindex="0" aria-label="Close"></v-close>
+        <v-dialog heading="Lorem ipsum" large middle>
+          <v-close label="Close"></v-close>
 
           <h3 class="u-marginBm">Lorem ipsum</h3>
 
@@ -130,10 +130,15 @@
     <script type="text/ng-template" id="info-modal-template.html">
 
       <v-modal class="vModal--default">
-        <v-dialog role="dialog" aria-label="Info" middle>
+        <v-dialog heading="vModal" middle>
+          <h4 class="u-marginBs">vModal</h4>
+
           <p>
-            vModal - Simple, flexible and beautiful modal dialogs in AngularJS.<br>
-            <small><i>Click on the "Cancel" button to close this dialog.</i></small>
+             Simple, flexible and beautiful modal dialogs in AngularJS.<br>
+          </p>
+
+          <p>
+            <small>Click on the "Cancel" button to close this dialog.</small>
           </p>
 
           <div class="u-marginTm">

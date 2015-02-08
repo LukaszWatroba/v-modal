@@ -31,6 +31,11 @@ v-dialog {
   background: $v-dialog-background;
   z-index: 10;
   min-width: 240px;
+  outline: 0;
+
+  &:focus {
+    outline: 0;
+  }
 }
 
 v-dialog[middle] {

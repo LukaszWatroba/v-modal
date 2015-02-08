@@ -21,17 +21,17 @@ angular.module('myApp', ['vModal'])
 
 .factory('myModal', function (vModal) {
   return vModal({
-    controller: 'MyModalCtrl',
-    controllerAs: 'modal',
+    controller: 'MyModalController',
+    controllerAs: 'myModalCtrl',
     templateUrl: 'my-modal.html'
   });
 })
 
-.controller('MyModalCtrl', function (myModal) {
+.controller('MyModalController', function (myModal) {
   this.close = myModal.deactivate;
 })
 
-.controller('MyCtrl', function (myModal) {
+.controller('AppController', function (myModal) {
   this.show = myModal.activate;
 });
 ```
@@ -40,8 +40,8 @@ angular.module('myApp', ['vModal'])
 > index.html
 
 ```html
-<div ng-app="myApp" ng-controller="MyCtrl as ctrl">
-  <a href ng-click="ctrl.show()">Show</a>
+<div ng-app="myApp" ng-controller="AppController as appCtrl">
+  <a href ng-click="appCtrl.show()">Show</a>
 </div>
 ```
 
@@ -49,12 +49,13 @@ angular.module('myApp', ['vModal'])
 > my-modal.html
 
 ```html
-<v-modal class="vModal--default" onclose="modal.close()">
-  <v-dialog role="dialog" aria-labelby="helloWorld" small middle>
-    <v-close role="button" tabindex="0" aria-label="Close"></v-close>
+<v-modal class="vModal--default" onclose="myModalCtrl.close()">
+  <v-dialog heading="My modal" small middle>
+    <v-close label="Close"></v-close>
     
-    <h3 id="helloWorld">Hello World!</h3>
+    <h1>My modal</h1>
 
+    <button ng-click="myModalCtrl.close()">OK</button>
   </v-dialog>
 </v-modal>
 ```
