@@ -19,11 +19,8 @@
     }
 
     v-close {
-      width: 30px;
-      height: 30px;
-      margin: 5px;
-      border-radius: 50%;
-      background-color: white;
+      width: 40px;
+      height: 40px;
 
       &::after,
       &::before {
@@ -31,7 +28,7 @@
         display: block;
         position: absolute;
         top: 50%;
-        left: 7px;
+        left: 12px;
         height: 1px;
         width: 16px;
         transform-origin: 50% 50%;
@@ -59,13 +56,18 @@
       }
     }
 
-    &.ng-enter,
-    &.ng-leave-active {
+    &.ng-enter {
       opacity: 0;
     }
-    &.ng-leave,
     &.ng-enter-active {
       opacity: 1;
+    }
+    
+    &.ng-leave {
+      opacity: 1;
+    }
+    &.ng-leave-active {
+      opacity: 0;
     }
   }
 

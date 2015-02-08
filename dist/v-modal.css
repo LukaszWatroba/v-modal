@@ -51,7 +51,7 @@ v-dialog {
   position: relative;
   pointer-events: auto;
   background: white;
-  z-index: 10;
+  z-index: 0;
   min-width: 240px;
   outline: 0; }
   v-dialog:focus {
@@ -93,8 +93,7 @@ v-close {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
-          user-select: none;
-  z-index: 20; }
+          user-select: none; }
   v-close:hover, v-close:focus {
     outline: 0; }
 
@@ -116,17 +115,14 @@ v-close {
     -webkit-animation: vDialog-enterZoom 0.5625s;
             animation: vDialog-enterZoom 0.5625s; }
   .vModal--default v-close {
-    width: 30px;
-    height: 30px;
-    margin: 5px;
-    border-radius: 50%;
-    background-color: white; }
+    width: 40px;
+    height: 40px; }
     .vModal--default v-close::after, .vModal--default v-close::before {
       content: '';
       display: block;
       position: absolute;
       top: 50%;
-      left: 7px;
+      left: 12px;
       height: 1px;
       width: 16px;
       -webkit-transform-origin: 50% 50%;
@@ -145,10 +141,14 @@ v-close {
       transition: background-color 0.25s; }
     .vModal--default v-close:hover::after, .vModal--default v-close:hover::before, .vModal--default v-close:focus::after, .vModal--default v-close:focus::before {
       background-color: #F44336; }
-  .vModal--default.ng-enter, .vModal--default.ng-leave-active {
+  .vModal--default.ng-enter {
     opacity: 0; }
-  .vModal--default.ng-leave, .vModal--default.ng-enter-active {
+  .vModal--default.ng-enter-active {
     opacity: 1; }
+  .vModal--default.ng-leave {
+    opacity: 1; }
+  .vModal--default.ng-leave-active {
+    opacity: 0; }
 
 /* Theme: default (animations) */
 @-webkit-keyframes vDialog-enterDown {
