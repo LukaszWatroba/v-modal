@@ -1,7 +1,6 @@
 describe('v-modal directive', function () {
   
   var $compile;
-  var modalConfig;
   var scope;
 
   var generateTemplate = function (options) {
@@ -29,15 +28,15 @@ describe('v-modal directive', function () {
 
   beforeEach(module('vModal'));
 
-  beforeEach(inject(function ($rootScope, _$compile_, _modalConfig_) {
+  beforeEach(inject(function ($rootScope, _$compile_) {
     scope = $rootScope.$new();
     $compile = _$compile_;
-    modalConfig = _modalConfig_;
   }));
 
   afterEach(function () {
     scope.$destroy();
   });
+
 
 
   it('should transclude scope', function () {

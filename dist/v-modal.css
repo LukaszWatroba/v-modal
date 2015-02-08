@@ -145,14 +145,10 @@ v-close {
       transition: background-color 0.25s; }
     .vModal--default v-close:hover::after, .vModal--default v-close:hover::before, .vModal--default v-close:focus::after, .vModal--default v-close:focus::before {
       background-color: #F44336; }
-  .vModal--default.ng-enter {
+  .vModal--default.ng-enter, .vModal--default.ng-leave-active {
     opacity: 0; }
-  .vModal--default.ng-enter-active {
+  .vModal--default.ng-leave, .vModal--default.ng-enter-active {
     opacity: 1; }
-  .vModal--default.ng-leave {
-    opacity: 1; }
-  .vModal--default.ng-leave-active {
-    opacity: 0; }
 
 /* Theme: default (animations) */
 @-webkit-keyframes vDialog-enterDown {

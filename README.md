@@ -41,7 +41,7 @@ angular.module('myApp', ['vModal'])
 
 ```html
 <div ng-app="myApp" ng-controller="AppController as appCtrl">
-  <a href ng-click="appCtrl.show()">Show</a>
+  <button ng-click="appCtrl.show()">Show</button>
 </div>
 ```
 
@@ -79,6 +79,10 @@ angular.module('myApp', ['vModal'])
 ```html
 <v-dialog middle></v-dialog>
 ```
+
+
+## Accessibility
+By default, vModal manages the focus and adds some common ARIA attributes to improve accessibility of your dialogs.
 
 
 ## Credits

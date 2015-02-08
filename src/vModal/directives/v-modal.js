@@ -12,6 +12,7 @@ function vModalDirective () {
     scope: {
       closeMethod: '&?onclose'
     },
+    controller: function () {},
     link: function (scope, iElement, iAttrs, ctrl, transclude) {
       transclude(scope.$parent, function(clone) {
         iElement.append(clone);

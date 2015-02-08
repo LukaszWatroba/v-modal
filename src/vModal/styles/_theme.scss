@@ -59,17 +59,13 @@
       }
     }
 
-    &.ng-enter {
-      opacity: 0;
-    }
-    &.ng-enter-active {
-      opacity: 1;
-    }
-    &.ng-leave {
-      opacity: 1;
-    }
+    &.ng-enter,
     &.ng-leave-active {
       opacity: 0;
+    }
+    &.ng-leave,
+    &.ng-enter-active {
+      opacity: 1;
     }
   }
 

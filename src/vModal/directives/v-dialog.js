@@ -8,12 +8,13 @@ angular.module('vModal.directives')
 function vDialogDirective () {
   return {
     restrict: 'AE',
+    require: '^vModal',
     transclude: true,
     scope: {
       heading: '@',
       role: '@'
     },
-    link: function (scope, iElement, iAttrs, ctrl, transclude) {
+    link: function (scope, iElement, iAttrs, modalCtrl, transclude) {
       transclude(scope.$parent, function(clone) {
         iElement.append(clone);
       });
@@ -22,10 +23,7 @@ function vDialogDirective () {
         iAttrs.$set('aria-label', scope.heading);
       }
 
-      if (!scope.role) {
-        iAttrs.$set('role', 'dialog');
-      }
-
+      iAttrs.$set('role', 'dialog');
       iAttrs.$set('tabindex', -1);
       iElement[0].focus();
     }
