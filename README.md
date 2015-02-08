@@ -4,6 +4,7 @@ Simple, flexible and beautiful modal dialogs in AngularJS.
 
 ## Demos
   - [GitHub](http://lukaszwatroba.github.io/v-modal)
+  - [CodePen](http://codepen.io/LukaszWatroba/pen/MYOBKb)
 
 
 ## Installation
@@ -82,7 +83,7 @@ angular.module('myApp', ['vModal'])
 
 
 ## Accessibility
-By default, vModal manages the focus and adds some common ARIA attributes to improve accessibility of your dialogs.
+By default, vModal manages keyboard focus and adds some common ARIA attributes to improve accessibility of your dialogs.
 
 
 ## Credits
