@@ -66,6 +66,7 @@ describe('v-modal directive', function () {
     expect(scope.closeModal).toHaveBeenCalled();
   });
 
+
   it('should call `closeModal` method when on `v-close` click', function () {
     var template = generateTemplate({ closeMethod: true, closeButton: true });
     var modal = $compile(template)(scope);

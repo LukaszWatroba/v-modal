@@ -50,6 +50,18 @@ describe('v-dialog directive', function () {
   });
 
 
+  it('should focus', inject(function ($document) {
+    var template = $(generateTemplate());
+    
+    template.appendTo($document[0].body)
+
+    var modal = $compile(template)(scope);
+    var dialog = modal.find('v-dialog');
+
+    expect($document[0].activeElement === dialog[0]).toBe(true);
+  }));
+
+
   it('should add `arial-label`, `tabindex` and `role` attributes', function () {
     var heading = 'Modal heading';
 
