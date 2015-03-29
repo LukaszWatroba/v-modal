@@ -22,10 +22,12 @@
 /* Base
  ***************************************/
 v-modal {
+  display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   position: fixed;
+  -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -104,7 +106,8 @@ v-close {
    ***************************************/
 .vModal--default {
   will-change: opacity;
-  transition: opacity 0.375s; }
+  -webkit-transition: opacity 0.375s;
+          transition: opacity 0.375s; }
   .vModal--default v-dialog {
     will-change: transform;
     padding: 20px;
@@ -138,7 +141,8 @@ v-close {
               transform: rotate(45deg); }
     .vModal--default v-close::after, .vModal--default v-close::before {
       background-color: #2196F3;
-      transition: background-color 0.25s; }
+      -webkit-transition: background-color 0.25s;
+              transition: background-color 0.25s; }
     .vModal--default v-close:hover::after, .vModal--default v-close:hover::before, .vModal--default v-close:focus::after, .vModal--default v-close:focus::before {
       background-color: #F44336; }
   .vModal--default.ng-enter {
@@ -153,7 +157,8 @@ v-close {
 /* Theme: default (animations) */
 @-webkit-keyframes vDialog-enterDown {
   0%, 60%, 75%, 90%, 100% {
-    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
   0% {
     -webkit-transform: translate3d(0, -3000px, 0);
@@ -176,7 +181,8 @@ v-close {
             transform: none; } }
 @keyframes vDialog-enterDown {
   0%, 60%, 75%, 90%, 100% {
-    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
   0% {
     -webkit-transform: translate3d(0, -3000px, 0);
@@ -200,11 +206,12 @@ v-close {
 
 @-webkit-keyframes vDialog-enterZoom {
   0%, 60%, 100% {
-    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
   0% {
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
-            transform: scale3d(0.3, 0.3, 0.3); }
+    -webkit-transform: scale3d(.3, .3, .3);
+            transform: scale3d(.3, .3, .3); }
 
   60% {
     -webkit-transform: scale3d(1.05, 1.05, 1.05);
@@ -216,11 +223,12 @@ v-close {
 
 @keyframes vDialog-enterZoom {
   0%, 60%, 100% {
-    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
   0% {
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
-            transform: scale3d(0.3, 0.3, 0.3); }
+    -webkit-transform: scale3d(.3, .3, .3);
+            transform: scale3d(.3, .3, .3); }
 
   60% {
     -webkit-transform: scale3d(1.05, 1.05, 1.05);
