@@ -1,6 +1,6 @@
 /**
  * vModal - Simple, flexible and beautiful modal dialogs in AngularJS
- * @version v1.1.0
+ * @version v1.1.1
  * @link http://lukaszwatroba.github.io/v-modal
  * @author Łukasz Wątroba <l@lukaszwatroba.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -148,8 +148,7 @@ function vModalDirective () {
        throw new Error('Expected modal to have exacly one of either `template` or `templateUrl`');
      }
 
-     var template      = config.template,
-         controller    = config.controller || null,
+     var controller    = config.controller || null,
          controllerAs  = config.controllerAs,
          container     = angular.element(config.container || $document[0].querySelector(modalConfig.containerSelector)),
          element       = null,
@@ -179,7 +178,7 @@ function vModalDirective () {
      function attach (html, locals) {
        element = angular.element(html);
        if (element.length === 0) {
-         throw new Error('The template contains no elements; you need to wrap text nodes')
+         throw new Error('The template contains no elements; you need to wrap text nodes');
        }
        scope = $rootScope.$new();
        if (controller) {
@@ -210,6 +209,7 @@ function vModalDirective () {
          scope = null;
          element.remove();
          element = null;
+         container.removeAttr('v-modal-open');
        });
      }
 

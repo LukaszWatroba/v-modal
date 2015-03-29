@@ -16,8 +16,7 @@
        throw new Error('Expected modal to have exacly one of either `template` or `templateUrl`');
      }
 
-     var template      = config.template,
-         controller    = config.controller || null,
+     var controller    = config.controller || null,
          controllerAs  = config.controllerAs,
          container     = angular.element(config.container || $document[0].querySelector(modalConfig.containerSelector)),
          element       = null,
@@ -47,7 +46,7 @@
      function attach (html, locals) {
        element = angular.element(html);
        if (element.length === 0) {
-         throw new Error('The template contains no elements; you need to wrap text nodes')
+         throw new Error('The template contains no elements; you need to wrap text nodes');
        }
        scope = $rootScope.$new();
        if (controller) {
@@ -78,6 +77,7 @@
          scope = null;
          element.remove();
          element = null;
+         container.removeAttr('v-modal-open');
        });
      }
 
