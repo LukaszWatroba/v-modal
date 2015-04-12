@@ -8,7 +8,7 @@ Simple, flexible and beautiful modal dialogs in AngularJS.
 
 
 ## Installation
-  - If you use [bower](http://bower.io/), just `bower install v-modal`. If not, download files [from the github repo](./dist)
+  - If you use [bower](http://bower.io/) or [npm](https://www.npmjs.com/), just `bower/npm install v-modal`. If not, download files [from the github repo](https://github.com/LukaszWatroba/v-modal/tree/master/dist)
   - Reference `v-modal.css` and `v-modal.js` in your index.html file
   - Reference the module in your app: `angular.module('myApp', [ 'vModal' ])`
 
@@ -53,7 +53,7 @@ angular.module('myApp', ['vModal'])
 <v-modal class="vModal--default" onclose="myModalCtrl.close()">
   <v-dialog heading="My modal" small middle>
     <v-close label="Close"></v-close>
-    
+
     <h1>My modal</h1>
 
     <button ng-click="myModalCtrl.close()">OK</button>
@@ -75,7 +75,7 @@ angular.module('myApp', ['vModal'])
 
 ### Positions
   - `center` (default)
-  - `middle` 
+  - `middle`
 
 ```html
 <v-dialog middle></v-dialog>
@@ -88,5 +88,3 @@ By default, vModal manages keyboard focus and adds some common ARIA attributes t
 
 ## Credits
 `vModal` service is based [angular-modal](https://github.com/btford/angular-modal) by Brian Ford.
-
-
