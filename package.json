@@ -1,11 +1,11 @@
 {
   "name": "v-modal",
   "description": "vModal - Simple, flexible and beautiful modal dialogs in AngularJS",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "author": "Łukasz Wątroba <l@lukaszwatroba.com>",
   "license": "MIT",
   "keywords": [
-    "AngularJS",
+    "angular",
     "dialog",
     "popup",
     "modal",
@@ -22,7 +22,6 @@
     "url": "https://github.com/LukaszWatroba/v-modal/issues"
   },
   "homepage": "http://lukaszwatroba.github.io/v-modal",
-  "dependencies": {},
   "devDependencies": {
     "chai": "^1.10.0",
     "chai-jquery": "^1.2.3",

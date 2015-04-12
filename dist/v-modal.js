@@ -1,6 +1,6 @@
 /**
  * vModal - Simple, flexible and beautiful modal dialogs in AngularJS
- * @version v1.1.1
+ * @version v1.2.0
  * @link http://lukaszwatroba.github.io/v-modal
  * @author Łukasz Wątroba <l@lukaszwatroba.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -82,11 +82,12 @@ function vDialogDirective () {
 
       iAttrs.$set('role', 'dialog');
       iAttrs.$set('tabindex', -1);
+
       iElement[0].focus();
+      setTimeout(function () { iElement[0].focus(); }, 0);
     }
   };
 }
-
 
 
 

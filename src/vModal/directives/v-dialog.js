@@ -25,8 +25,9 @@ function vDialogDirective () {
 
       iAttrs.$set('role', 'dialog');
       iAttrs.$set('tabindex', -1);
+
       iElement[0].focus();
+      setTimeout(function () { iElement[0].focus(); }, 0);
     }
   };
 }
-
