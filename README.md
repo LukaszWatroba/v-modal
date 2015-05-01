@@ -2,9 +2,8 @@
 Simple, flexible and beautiful modal dialogs in AngularJS.
 
 
-## Demos
+## Demo
   - [GitHub](http://lukaszwatroba.github.io/v-modal)
-  - [CodePen](http://codepen.io/LukaszWatroba/pen/MYOBKb)
 
 
 ## Installation
