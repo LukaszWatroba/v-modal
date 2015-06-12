@@ -1,6 +1,6 @@
 /**
  * vModal - Simple, flexible and beautiful modal dialogs in AngularJS
- * @version v1.3.1
+ * @version v1.3.2
  * @link http://lukaszwatroba.github.io/v-modal
  * @author Łukasz Wątroba <l@lukaszwatroba.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
