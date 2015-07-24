@@ -1,6 +1,6 @@
 /**
  * vModal - Simple, flexible and beautiful modal dialogs in AngularJS
- * @version v1.3.2
+ * @version v1.3.3
  * @link http://lukaszwatroba.github.io/v-modal
  * @author Łukasz Wątroba <l@lukaszwatroba.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -151,12 +151,13 @@ function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, 
       throw new Error('Expected modal to have exacly one of either `template` or `templateUrl`');
     }
 
-    var controller    = config.controller || null,
-    controllerAs  = config.controllerAs,
-    container     = angular.element(config.container || $document[0].querySelector(modalConfig.containerSelector)),
-    element       = null,
-    html,
-    scope;
+    var controller      = config.controller || null,
+        controllerAs    = config.controllerAs,
+        container       = angular.element(config.container || $document[0].querySelector(modalConfig.containerSelector)),
+        root            = angular.element($document[0].querySelector('html')),
+        element         = null,
+        html,
+        scope;
 
     if (config.template) {
       html = $q.when(config.template);
@@ -202,6 +203,7 @@ function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, 
       }
       $compile(element)(scope);
       container.attr('v-modal-open', '');
+      root.attr('v-modal-active', '');
       return $animate.enter(element, container);
     }
 
@@ -215,6 +217,7 @@ function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, 
         element.remove();
         element = null;
         container.removeAttr('v-modal-open');
+        root.removeAttr('v-modal-active', '');
       });
     }
 
