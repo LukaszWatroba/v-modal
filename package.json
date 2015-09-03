@@ -18,6 +18,7 @@
     "type": "git",
     "url": "https://github.com/LukaszWatroba/v-modal.git"
   },
+  "main": "index.js",
   "bugs": {
     "url": "https://github.com/LukaszWatroba/v-modal/issues"
   },
