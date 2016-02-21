@@ -1,6 +1,6 @@
 /**
  * vModal - Simple, flexible and beautiful modal dialogs in AngularJS
- * @version v1.3.4
+ * @version v1.3.5
  * @link http://lukaszwatroba.github.io/v-modal
  * @author Łukasz Wątroba <l@lukaszwatroba.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -23,8 +23,6 @@ angular.module('vModal.directives', []);
 angular.module('vModal.services', []);
 angular.module('vModal',
   [
-    'ngAnimate',
-
     'vModal.config',
     'vModal.directives',
     'vModal.services'
