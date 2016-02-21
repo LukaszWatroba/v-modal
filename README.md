@@ -61,7 +61,7 @@ angular.module('myApp', ['vModal'])
 ```
 
 
-### Sizes
+#### Sizes
   - `small`
   - `medium`
   - `large`
@@ -72,12 +72,52 @@ angular.module('myApp', ['vModal'])
 ```
 
 
-### Positions
+#### Positions
   - `center` (default)
   - `middle`
 
 ```html
 <v-dialog middle></v-dialog>
+```
+
+
+## Configuration
+
+#### Module
+To change the default container selector, inject `modalConfig` provider in your app config:
+
+```javascript
+angular
+  .module('myApp', ['vAccordion'])
+  .config(function (modalConfig) {
+    modalConfig.containerSelector = 'body';
+  });
+```
+
+#### SCSS
+If you are using SASS, you can import v-modal.scss file and override following variables:
+
+```scss
+$v-modal-default-theme:    true !default;
+$v-modal-use-flexbox:      true !default;
+
+$v-modal-spacing:          20px !default;
+$v-modal-zindex:           1000 !default;
+$v-modal-backdrop:         rgba(0,0,0, 0.5) !default;
+
+$v-dialog-background:      white !default;
+$v-dialog-border-radius:   2px   !default;
+
+$v-dialog-sm-width:        340px !default;
+$v-dialog-md-width:        560px !default;
+$v-dialog-lg-width:        780px !default;
+
+$v-close-color:            #2196F3 !default;
+$v-close-hover-color:      #F44336 !default;
+$v-close-hover-duration:   0.25s   !default;
+
+$v-modal-fade-animation-duration:    0.25s !default;
+$v-dialog-enter-animation-duration:  0.5s  !default;
 ```
 
 
