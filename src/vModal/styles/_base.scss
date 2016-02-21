@@ -3,9 +3,7 @@
 
 
 v-modal {
-  display: flex;
   position: fixed;
-  justify-content: center;
   top: 0;
   left: 0;
   width: 100%;
@@ -14,7 +12,7 @@ v-modal {
   overflow-x: hidden;
   overflow-y: auto;
   background-color: $v-modal-backdrop;
-  padding: $v-modal-spacing;
+  padding: $v-modal-spacing * 2 $v-modal-spacing;
 
   v-close {
     position: absolute;
@@ -24,7 +22,6 @@ v-modal {
 }
 
 v-dialog {
-  align-self: flex-start;
   display: block;
   position: relative;
   pointer-events: auto;
@@ -32,6 +29,7 @@ v-dialog {
   z-index: 0;
   min-width: 240px;
   outline: 0;
+  max-width: $v-dialog-md-width;
 
   &:focus {
     outline: 0;
@@ -39,7 +37,6 @@ v-dialog {
 }
 
 v-dialog[middle] {
-  align-self: center;
   max-height: 100%;
   overflow-y: auto;
 }
@@ -87,4 +84,28 @@ v-close {
 
 [v-modal-open] {
   overflow: hidden;
+}
+
+@if $v-modal-use-flexbox {
+  v-modal {
+    display: flex;
+    justify-content: center;
+  }
+
+  v-dialog {
+    align-self: flex-start;
+  }
+
+  v-dialog[middle] {
+    align-self: center;
+  }
+}
+@else {
+  v-dialog {
+    margin: 0 auto;
+  }
+  v-dialog[middle] {
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }

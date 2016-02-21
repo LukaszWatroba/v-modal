@@ -2,20 +2,14 @@
   /* Theme: default
    ***************************************/
 
-  
   .vModal--default {
-    will-change: opacity;
-    transition: opacity $v-dialog-enter-duration * 0.5;
+    transition: opacity $v-modal-fade-animation-duration;
 
     v-dialog {
       will-change: transform;
       padding: $v-modal-spacing;
       border-radius: $v-dialog-border-radius;
-      animation: vDialog-enterDown $v-dialog-enter-duration;
-    }
-
-    v-dialog[middle] {
-      animation: vDialog-enterZoom $v-dialog-enter-duration * 0.75;
+      animation: vDialog-enter $v-dialog-enter-animation-duration;
     }
 
     v-close {
@@ -62,7 +56,7 @@
     &.ng-enter-active {
       opacity: 1;
     }
-    
+
     &.ng-leave {
       opacity: 1;
     }
@@ -73,41 +67,28 @@
 
 
   /* Theme: default (animations) */
-
-  @keyframes vDialog-enterDown {
-    0%, 60%, 75%, 90%, 100% {
-      transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-    }
+  @keyframes vDialog-enter {
     0% {
-      transform: translate3d(0, -3000px, 0);
-    }
-    60% {
-      transform: translate3d(0, 25px, 0);
-    }
-    75% {
-      transform: translate3d(0, -10px, 0);
-    }
-    90% {
-      transform: translate3d(0, 5px, 0);
+      transform: translate3d(0, 30px, 0);
     }
     100% {
-      transform: none;
+      transform: translate3d(0, 0, 0);
     }
   }
 
-  @keyframes vDialog-enterZoom {
-    0%, 60%, 100% {
-      transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-    }
-    0% {
-      transform: scale3d(.3, .3, .3);
-    }
-    60% {
-      transform: scale3d(1.05, 1.05, 1.05);
-    }
-    100% {
-      transform: scale3d(1, 1, 1);
-    }
+}
+
+@if $v-modal-default-theme and $v-modal-use-flexbox == false {
+  .vModal--default v-dialog[middle] {
+    animation: vDialog-enterAlt $v-dialog-enter-animation-duration;
   }
 
+  @keyframes vDialog-enterAlt {
+    0% {
+      transform: translate3d(0, 30px, 0) translateY(-50%);
+    }
+    100% {
+      transform: translate3d(0, 0, 0) translateY(-50%);
+    }
+  }
 }

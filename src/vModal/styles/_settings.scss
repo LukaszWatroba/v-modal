@@ -3,25 +3,28 @@
 // -------------------------------------
 
 
-$v-modal-default-theme: true !default;
+$v-modal-default-theme:    true !default;
+$v-modal-use-flexbox:      true !default;
 
 
 // Modal
 // -------------------------------------
 
-$v-modal-spacing:    20px !default;
+$v-modal-spacing:          20px !default;
 
-$v-modal-zindex:     1000             !default;
-$v-modal-backdrop:   rgba(0,0,0, 0.5) !default;
+$v-modal-zindex:           1000 !default;
+$v-modal-backdrop:         rgba(0,0,0, 0.5) !default;
 
-$v-dialog-background:       white !default;
-$v-dialog-border-radius:    2px   !default;
-$v-dialog-enter-duration:   0.75s !default;
+$v-dialog-background:      white !default;
+$v-dialog-border-radius:   2px   !default;
 
-$v-dialog-sm-width:   380px !default;
-$v-dialog-md-width:   640px !default;
-$v-dialog-lg-width:   860px !default;
+$v-dialog-sm-width:        340px !default;
+$v-dialog-md-width:        560px !default;
+$v-dialog-lg-width:        780px !default;
 
 $v-close-color:            #2196F3 !default;
 $v-close-hover-color:      #F44336 !default;
 $v-close-hover-duration:   0.25s   !default;
+
+$v-modal-fade-animation-duration:    0.25s !default;
+$v-dialog-enter-animation-duration:  0.5s  !default;
