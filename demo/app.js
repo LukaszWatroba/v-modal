@@ -7,11 +7,6 @@
       'vModal'
     ])
 
-    .config(function ($compileProvider) {
-      $compileProvider.debugInfoEnabled(false);
-    })
-
-
     .factory('loginModal', function (vModal) {
       return vModal({
         controller: 'LoginController',
