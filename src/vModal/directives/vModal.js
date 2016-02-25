@@ -10,17 +10,17 @@ function vModalDirective () {
     restrict: 'AE',
     transclude: true,
     scope: {
-      closeMethod: '&?onclose'
+      close: '&?onclose'
     },
-    controller: function () {},
+    controller: angular.noop,
     link: function (scope, iElement, iAttrs, ctrl, transclude) {
       transclude(scope.$parent, function(clone) {
         iElement.append(clone);
       });
-			
-			scope.closeMethod = (angular.isFunction(scope.closeMethod)) ? scope.closeMethod : angular.noop;
 
-      function isClose (el) {
+			scope.close = (angular.isFunction(scope.close)) ? scope.close : angular.noop;
+
+      function hasParentElement (el) {
         while (el.tagName !== 'V-CLOSE') {
           el = el.parentNode;
           if (!el) {
@@ -30,14 +30,19 @@ function vModalDirective () {
         return true;
       }
 
-      iElement.on('click', function (event) {
+      function modalClick (event) {
         var isBackdrop = (event.target.tagName === 'V-MODAL');
 
-        if (isBackdrop || isClose(event.target)) {
-          scope.$apply(function () { scope.closeMethod(); });
+        if (isBackdrop || hasParentElement(event.target, 'V-CLOSE')) {
+          scope.$apply(function () { scope.close(); });
         }
+      }
+
+      iElement.on('click', modalClick);
+
+      scope.$on('$destroy', function () {
+        iElement.off('click', modalClick);
       });
     }
   };
 }
-
