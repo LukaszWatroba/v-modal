@@ -37,8 +37,9 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('styles', function() {
-  return gulp.src('src/vModal/styles/*.scss')
+  return gulp.src('src/vModal/styles/vModal.scss')
     .pipe(sass({style: 'expanded'}))
+    .pipe(rename({basename: 'v-modal'} ))
     .pipe(autoprefixer('last 2 version'))
     .pipe(header(banner, { pkg : pkg } ))
     .pipe(gulp.dest('dist/'))
@@ -76,6 +77,6 @@ gulp.task('default', ['lint-src', 'test', 'scripts', 'styles']);
 gulp.task('watch', function() {
   gulp.watch('src/vModal/**/*.js', ['lint-src', 'scripts']);
   gulp.watch('test/**/*.spec.js', ['lint-tests', 'test']);
-  
+
   gulp.watch('src/vModal/styles/**/*.scss', ['styles']);
 });
