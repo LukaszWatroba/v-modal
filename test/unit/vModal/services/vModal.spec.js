@@ -1,4 +1,4 @@
-describe('v-modal service', function() {
+describe('vModal service', function() {
 
   var container;
   var vModal;
@@ -25,7 +25,7 @@ describe('v-modal service', function() {
   });
 
 
-    
+
   it('should not show a modal initially', function() {
     var modal = vModal({
       templateUrl: 'test.html',
