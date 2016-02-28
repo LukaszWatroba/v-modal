@@ -96,7 +96,7 @@ angular
 ```
 
 #### SCSS
-If you are using SASS, you can import v-modal.scss file and override following variables:
+If you are using SASS, you can import vModal.scss file and override following variables:
 
 ```scss
 $v-modal-default-theme:    true !default;
