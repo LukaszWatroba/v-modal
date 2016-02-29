@@ -62,7 +62,10 @@ angular.module('myApp', ['vModal'])
 ```
 
 
+## Configuration
+
 #### Sizes
+
   - `small`
   - `medium`
   - `large`
@@ -72,8 +75,8 @@ angular.module('myApp', ['vModal'])
 <v-dialog large></v-dialog>
 ```
 
-
 #### Positions
+
   - `center` (default)
   - `middle`
 
@@ -81,11 +84,8 @@ angular.module('myApp', ['vModal'])
 <v-dialog middle></v-dialog>
 ```
 
-
-## Configuration
-
-#### Module
-To change the default container selector, inject `modalConfig` provider in your app config:
+#### Container
+To change the default container selector, use `modalConfig` provider in your app config, like so:
 
 ```javascript
 angular
@@ -96,7 +96,7 @@ angular
 ```
 
 #### SCSS
-If you are using SASS, you can import vModal.scss file and override following variables:
+If you are using SASS, you can import vModal.scss file and override the following variables:
 
 ```scss
 $v-modal-default-theme:    true !default;
