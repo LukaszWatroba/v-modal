@@ -3,7 +3,8 @@
 // Config
 angular.module('vModal.config', [])
   .constant('modalConfig', {
-    containerSelector: 'body'
+    containerSelector: 'body',
+    closeOnEsc: true
   });
 
 

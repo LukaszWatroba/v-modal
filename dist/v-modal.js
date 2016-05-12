@@ -14,7 +14,8 @@
 // Config
 angular.module('vModal.config', [])
   .constant('modalConfig', {
-    containerSelector: 'body'
+    containerSelector: 'body',
+    closeOnEsc: true
   });
 
 
@@ -94,7 +95,7 @@ angular.module('vModal.directives')
   .directive('vModal', vModalDirective);
 
 
-function vModalDirective () {
+function vModalDirective ($document, modalConfig) {
   return {
     restrict: 'AE',
     transclude: true,
@@ -109,10 +110,10 @@ function vModalDirective () {
 
 			scope.close = (angular.isFunction(scope.close)) ? scope.close : angular.noop;
 
-      function hasParentElement (el) {
-        while (el.tagName !== 'V-CLOSE') {
-          el = el.parentNode;
-          if (!el) {
+      function hasParentElement (elem) {
+        while (elem.tagName !== 'V-CLOSE') {
+          elem = elem.parentNode;
+          if (!elem) {
             return false;
           }
         }
@@ -126,11 +127,23 @@ function vModalDirective () {
           scope.$apply(function () { scope.close(); });
         }
       }
+      
+      function documentKeydown (event) {
+        if (!modalConfig.closeOnEsc) { return false; }
+        
+        if (event.keyCode === 27) {
+          scope.$apply(function () {
+            scope.close();
+          });
+        }
+      }
 
       iElement.on('click', modalClick);
+      $document.on('keydown', documentKeydown);
 
       scope.$on('$destroy', function () {
         iElement.off('click', modalClick);
+        $document.off('keydown', documentKeydown);
       });
     }
   };

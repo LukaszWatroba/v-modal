@@ -20,7 +20,7 @@ describe('vModal directive', function () {
     return template;
   };
 
-
+  
 
   beforeEach(module('vModal'));
 
@@ -74,6 +74,24 @@ describe('vModal directive', function () {
     spyOn(scope, 'close');
 
     vclose.click();
+
+    expect(scope.close).toHaveBeenCalled();
+  });
+  
+  it('should call `close` method on ESC key press', function () {
+    var template = generateTemplate({ attributes: 'onclose="close()"', content: '<v-close></v-close>' });
+    var modal = $compile(template)(scope);
+    
+    scope.close = function () {};
+    scope.$digest();
+    spyOn(scope, 'close');
+    
+    var event = document.createEvent('Event');
+    event.keyCode = 27;
+    event.initEvent('keydown');
+    document.dispatchEvent(event);
+    
+    scope.$digest();
 
     expect(scope.close).toHaveBeenCalled();
   });
