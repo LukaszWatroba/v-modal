@@ -149,6 +149,8 @@ function vModalDirective ($document, modalConfig) {
   };
 }
 
+vModalDirective.$inject = ['$document', 'modalConfig'];
+
 /*
 * @license
 * angular-modal v0.5.0
