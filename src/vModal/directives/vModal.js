@@ -58,3 +58,5 @@ function vModalDirective ($document, modalConfig) {
     }
   };
 }
+
+vModalDirective.$inject = ['$document', 'modalConfig'];
